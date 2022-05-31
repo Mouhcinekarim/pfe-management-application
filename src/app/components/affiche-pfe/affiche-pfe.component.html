@@ -1,0 +1,199 @@
+	<!-- <div class="cadraffiche">
+		<div class="row" id="serie-card">
+			<div class="col-auto d-flex justify-content-center"><img id="poster" class="img-fluid" [src]="pfe.photo" height="auto" /></div><div class="col"><span id="title">{{pfe.niveau}}</span>
+				<div class="d-flex justify-content-end">
+					<p class="text-nowrap">Niveux :{{pfe.niveau}}</p>
+					<span id="rating-serie"></span><p [hidden]="pfe.stage">Stage</p>
+				
+					</div><div class="d-flex"><span id="year_start">Anne : {{pfe.anne}}</span></div>
+					<span id="plot">{{pfe.description}}</span>
+					<div class="d-flex" style="margin-top: 15px;">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+		 -->
+		
+<!-- 
+
+		 <div class="cadraffiche" data-aos="fade" data-aos-once="true">
+			<div class="row" id="serie-card"><div class="col-auto d-flex justify-content-center"><img id="poster" class="img-fluid" [src]="base64ToImage(pfe.photo)" height="auto" /></div>
+				<div class="col"><span id="title">{{pfe.titre}}</span>
+					<div class="d-flex justify-content-end">
+						<p class="text-nowrap">Niveux :</p><span id="rating-serie">{{pfe.niveau}}</span>
+						
+					</div>
+					<div class="d-flex"><span id="year_start">L'année</span>
+						<p id="separator">-</p><span id="year_end">{{pfe.anne}}</span>
+					</div><span id="plot" class="">{{pfe.description}}</span>
+					<div class="d-flex" style="margin-top: 15px;">
+						
+					</div>
+					
+					<button class="btn btn-primary" type="button"  (click)="open(content)" >Update</button>
+				</div>
+			</div>
+			<div class="col p-2"><a class="btn btn-primary btn-sm  d-sm-inline-block" role="button" (click)="Doawload(pfe.rapport,pfe.titre,'pdf')" ><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a></div> -->
+			<!-- <div class="card shadow" style="margin-bottom: 50px;" >
+				<div class="row">
+					<div  class="col-md-12 col-lg-2 d-lg-flex " style="height: 260px;">
+                  <img class="img-fluid" (click)="open(content1)" [src]="base64ToImage(pfe.photo)"> 
+					</div>
+					<div class="col-lg-10">
+				<div class="card-header py-3" >
+					<p class="text-primary m-0 fw-bold" style="border-color: rgb(0,1,4);width: 622.333px;">Titre : {{pfe.titre}}</p>
+				</div>
+				<div class="card-body" style="height: 100%;" >
+					<p>Description</p>
+					<p>{{pfe.description}}
+					<div class="row">
+						<div class="col  p-4">
+							<p>Niveux : {{pfe.niveau}}</p>
+						</div>
+						<div class="col  p-4">
+							<p>Anne : {{pfe.anne}}</p>
+						</div>
+					</div>
+				
+				</div>
+				
+			</div>
+				</div>
+
+
+				<div class="card-header ">
+					<div class="row justify-content-center align-items-center ">
+						<div class="col p-4"><a class="btn btn-primary btn-sm  d-sm-inline-block" role="button" (click)="Doawload(pfe.rapport,pfe.titre,'pdf')" ><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a></div>
+						<div class="col  p-4"><a class="btn btn-primary btn-sm  d-sm-inline-block" (click)="Doawload(pfe.photo,pfe.titre,'png')" role="button"  style="background: var(--bs-red);"><i class="fas fa-download fa-sm text-white-50"></i> Download page de garde</a></div>
+						<div class="col  p-4"><button class="btn btn-primary" type="button"  (click)="open(content)" >Update</button></div>
+						
+					</div>
+				</div>
+
+
+			
+				<ng-template #content let-modal>
+					<div class="modal-header">
+					  <h4 class="modal-title" id="modal-basic-title">Ajouter un PFE</h4>
+					  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+					  <form enctype="multipart/form-data">
+					 
+						<div class="mb-3"><input class="form-control" type="text" name="titre" placeholder="Titre"  [(ngModel)]="pfe.titre" /></div>
+						<div class="mb-3"><input class="form-control " type="text" name="niveux" placeholder="Niveux"  [(ngModel)]="pfe.niveau"/></div>
+						<div class="mb-3"><textarea class="form-control" name="description" placeholder="description"  [(ngModel)]="pfe.description"   rows="6"></textarea></div>
+						<div class="mb-3">
+						  L'anne
+						  <input type="number"  min="2010" [max]="currentTime.getFullYear()" class="form-control" name="datepicker" id="datepicker"  [(ngModel)]="pfe.anne" />      
+						</div>
+						<div class="mb-3">
+						  <div class="form-check">
+							<input class="form-check-input" type="checkbox" name="isString" id="flexCheckDefault"  [(ngModel)]="pfe.stage">
+							<label class="form-check-label" for="flexCheckDefault">
+							  Stage
+							</label>
+						  </div>
+						</div>
+						<div class="mb-3">
+							<label>Rapport</label><br>
+							<input type="file"  name="photo"    (change)="chargerapport($event)"  >
+						</div>
+						<div class="mb-3">
+							<label>Photo de garde</label><br>
+							<input type="file" name="photo"  (change)="chargephoto($event)"  >
+						</div>
+						<div class="mb-3">
+						  <button type="button" class="btn  btn-primary" (click)="Upload(pfe)"  (click)="modal.close('Save click')">
+							 <span class="btn-label"><i class="fa fa-check"></i></span>Save</button>
+						</div>
+						
+					</form>
+					</div>
+					<div class="modal-footer">
+					  
+					</div>
+				</ng-template>
+				  
+
+
+
+				  <ng-template #content1 let-modal>
+					  <img [src]="base64ToImage(pfe.photo)">
+				</ng-template>
+
+			</div> -->
+
+
+
+			<div id="content-wrapper" *ngIf="pfe!=null" >
+				<div class="container">
+					<div class="card shadow mb-5" style="margin-bottom: 1rem !important;">
+						<div class="card-header py-3">
+							<p class="text-primary m-0 fw-bold">Les information de PFE</p>
+						</div>
+						<div class="card-body" style="background:url('https://www.allianzcare.com/fr/ressources/ressources-pour-les-affilies/questions-frequemment-posees/_jcr_content/root/parsys/stage_1457134868_cop/stageimage.img.82.1920.png/1613479347843/faq-background.png');">
+							<div class="row">
+								<div class="col-md-6 col-lg-5"><img class="rounded w-100 h-100 fit-cover" style="min-height: 300px;" [src]="base64ToImage(pfe.photo)"></div>
+								<div class="col " style="color: black;">
+									<div class="row">
+										<div class="col-lg-12">
+											<h4 class="text-center">{{pfe.titre}}</h4>
+											<p><strong>L&#39;anne : </strong>{{pfe.anne}}</p>
+											<p><strong>Niveau : </strong>{{pfe.niveau}}</p>
+											<p class="text-break" style="height: 300px;"><strong>Description : </strong>{{pfe.description}}</p>
+											<div class="col-lg-12" style="position: relative;">
+												<div class="row text-center">
+													<div class="col-lg-4"><button class="btn btn-primary" type="button" (click)="Doawload(pfe.rapport,pfe.titre,'pdf')"><i class="fa fa-download"></i> Rapport</button></div>
+													<div class="col-lg-4"><button class="btn btn-success" type="button" (click)="Doawload(pfe.photo,pfe.titre,'png')"><i class="fa fa-download"></i> Page Garde</button></div>
+													<div class="col-lg-4"><button class="btn btn-primary" type="button" (click)="open(content)" style="--bs-info: #36b9cc;--bs-info-rgb: 54,185,204;"><i class="fa fa-refresh"></i> Update</button></div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<ng-template #content let-modal>
+						<div class="modal-header">
+						  <h4 class="modal-title" id="modal-basic-title">Ajouter un PFE</h4>
+						  <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+							<span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						<div class="modal-body">
+						  <form enctype="multipart/form-data">
+						 
+							<div class="mb-3"><input class="form-control" type="text" name="titre" placeholder="Titre"  [(ngModel)]="pfe.titre" /></div>
+							<div class="mb-3"><input class="form-control " type="text" name="niveux" placeholder="Niveux"  [(ngModel)]="pfe.niveau"/></div>
+							<div class="mb-3"><textarea class="form-control" name="description" placeholder="description"  [(ngModel)]="pfe.description"   rows="6"></textarea></div>
+							<div class="mb-3">
+							  L'anne
+							  <input type="number"  min="2010" [max]="currentTime.getFullYear()" class="form-control" name="datepicker" id="datepicker"  [(ngModel)]="pfe.anne" />      
+							</div>
+							
+							<div class="mb-3">
+								<label>Rapport</label><br>
+								<input type="file"  name="photo"    (change)="chargerapport($event)"  >
+							</div>
+							<div class="mb-3">
+								<label>Photo de garde</label><br>
+								<input type="file" name="photo"  (change)="chargephoto($event)"  >
+							</div>
+							<div class="mb-3">
+							  <button type="button" class="btn  btn-primary" (click)="Upload(pfe)"  (click)="modal.close('Save click')">
+								 <span class="btn-label"><i class="fa fa-check"></i></span>Save</button>
+							</div>
+							
+						</form>
+						</div>
+						<div class="modal-footer">
+						  
+						</div>
+					</ng-template>
+				</div>
+			</div>

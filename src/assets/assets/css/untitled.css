@@ -1,0 +1,7 @@
+@media (min-width: 768px) {
+  .sidebar {
+    width: 40% !important;
+    margin-bottom: -10px;
+  }
+}
+

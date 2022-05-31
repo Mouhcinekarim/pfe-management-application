@@ -1,0 +1,50 @@
+<div class="container" style="margin-top:20px">
+    <div class="row">
+        <div class="col-12 d-xxl-flex justify-content-xxl-center">
+            <form class="search-form" style="max-width: none;width: auto;">
+                <div class="input-group"><span class="input-group-text"><i class="fa fa-search"></i></span><input class="form-control" type="text" name="niveux" [(ngModel)]="niveux" placeholder="niveux"/><button class="btn btn-light" (click)="cherche()" type="button">Search </button></div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+            <h3 style="text-align: center;">List des PFE</h3>
+            <div class="table-responsive">
+                <table class="table" *ngIf="listprof!=null">
+                    <thead>
+                        <tr>
+                            <th>Professeur</th>
+                            <th>Titre PFE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let prof of listprof">
+                            <td>{{prof.nom}} {{prof.prenom}}</td>
+                            <td>{{prof.titre}}</td>
+                        </tr>
+                      
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col">
+            <h3 style="text-align: center;">List des groups</h3>
+            <div class="table-responsive">
+                <table class="table" *ngIf="listGroup!=null">
+                    <thead>
+                        <tr>
+                            <th style="text-align: center;">Les Etudiants</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let group of listGroup">
+                            <td style="text-align: center;"><p *ngFor="let etudiant of group.etudiants"> {{etudiant.nom}} {{etudiant.prenom}} </p></td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 text-center" *ngIf="listprof!=null && listGroup!=null"><button (click)="mellange()" [disabled]="niveux==null" class="btn btn-primary" type="button">Distribuer les PFEs</button></div>
+    </div>
+</div>

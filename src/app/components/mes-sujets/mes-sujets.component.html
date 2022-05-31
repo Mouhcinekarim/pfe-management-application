@@ -1,0 +1,182 @@
+ <!-- NOTE : même div du resultat  -->
+ <!-- + -->
+ <!--
+   licence/master
+   titre pfe
+   btn : confirmer pfe
+  -->
+ 
+
+ <div  class="d-md-flex justify-content-md-end d-sm-flex justify-content-sm-end d-flex justify-content-end" style="position:absolute;right:25px;top:65px;z-index:2;">
+    <div  class="dropdown" style="margin-top: 13px;"><button class="btn btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="box-shadow: 0px 0px ;border-width: 1px;border-color: var(--bs-purple);border-radius: 27px;border-top-left-radius: 14px;"><i class="fas fa-plus-circle fs-2" style="color: var(--bs-purple);"></i></button>
+      <div class="dropdown-menu dropdown-menu-dark"><a class="dropdown-item" href="#" data-bs-target="#nouveau" data-bs-toggle="modal">nouveau projet</a>
+          <hr style="margin-top: 0px;margin-bottom: 0px;"><a class="dropdown-item" href="#" data-bs-target="#ancien" data-bs-toggle="modal">ancien projet</a>
+      </div>
+    </div>
+  </div> 
+ 
+  <!-- <div class="container d-lg-flex justify-content-lg-center">
+      <div class="row d-flex justify-content-center" style="max-width: 698px;box-shadow: 0px 0px 2px 1px;border-color: var(--bs-gray-500);background: var(--bs-white);">
+          <div class="col-5 col-sm-3 col-md-2 col-lg-2 d-sm-flex d-md-flex d-lg-flex justify-content-sm-center justify-content-md-center justify-content-lg-center align-items-lg-center" style="height: 165px;background: var(--bs-gray-300);">
+              <h5 class="d-lg-flex justify-content-center align-items-center align-self-center justify-content-lg-center align-items-lg-center">image</h5>
+          </div>
+          <div class="col-sm-9 col-md-10 col-lg-10">
+              <h3>Titre</h3>
+              <h3>Objectif</h3>
+              <p class="text-break">Etiam semper dui habitant nullam adipiscing, curabitur rhoncus. Quisque eu primis, convallis cubilia curabitur&nbsp;</p>
+          </div>
+          <div class="col-3 col-sm-1 col-lg-1 d-md-flex d-lg-flex justify-content-md-center justify-content-lg-center align-items-lg-center" data-bs-toggle="tooltip" data-bss-tooltip="" title="Page de garde"><button class="bg-white" type="button" style="border-width: 0px;"><i class="far fa-arrow-alt-circle-down fs-1 text-success" data-bss-hover-animate="swing"></i></button></div>
+          <div class="col-3 col-sm-1 col-lg-1 d-md-flex d-lg-flex justify-content-md-center justify-content-lg-center align-items-lg-center"><button class="bg-white" data-bs-toggle="tooltip" data-bss-tooltip="" type="button" style="border-width: 0px;" title="rapport"><i class="fas fa-download fs-1 text-success" data-bss-hover-animate="swing"></i></button></div>
+          <div class="col-4 col-sm-3 col-md-2 offset-sm-3 offset-md-0 d-md-flex d-lg-flex justify-content-md-end align-items-md-end justify-content-lg-center align-items-lg-center">
+              <h4>licence</h4>
+          </div>
+          <div class="col-3 col-sm-2 col-md-3 col-lg-2 offset-md-0 offset-lg-0 d-md-flex d-lg-flex justify-content-md-center align-items-md-end justify-content-lg-center align-items-lg-center">
+              <h4>2022</h4>
+          </div>
+          <div class="col-3 col-sm-2 d-md-flex justify-content-md-center align-items-md-end">
+              <h4><span style="text-decoration: line-through;">stage</span></h4>
+          </div>
+          <div class="col-3 col-sm-12 col-md-3 col-lg-4 d-sm-flex d-md-flex justify-content-sm-end justify-content-md-end align-items-md-center"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-gear fs-1 text-warning">
+                  <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"></path>
+                  <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"></path>
+              </svg></div>
+      </div>
+  </div> -->
+<!-- </div> -->
+<app-list-pfe></app-list-pfe>
+<!-- ? modal nouveau pfe -->
+<div class="modal fade" role="dialog" tabindex="-1" id="nouveau">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <!-- ? header modal -->
+          <div class="modal-header d-md-flex justify-content-lg-center" style="background: #f1f5f8;">
+              <div class="d-md-flex justify-content-md-center">
+                  <h4 class="modal-title text-center d-lg-flex justify-content-lg-center" style="color: var(--bs-gray-900);">Vous remplissez un nouveau PFE</h4>
+              </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- ? body modal -->
+          <div class="modal-body" style="background: #f1f5f8;">
+              <!--// TODO : enctype in form -->
+              <form enctype="multipart/form-data" #valid="ngForm" [formGroup]="pfeValidation">
+                  <!-- ? titre -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input  formControlName="titre" class="form-control color-bm" type="text" id="email" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          titre du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? titre validation -->
+                  <div *ngIf="">
+
+                  </div>
+                  <!--  -->
+                  <!-- ? niveau -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2"><select  class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                              <option >Licence</option>
+                              <option >master</option>
+                              <option >Cycle</option>
+                          </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                              Niveau
+                          </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? année -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input  [value]="currentTime.getFullYear()" formControlName="anne" class="form-control color-bm" type="hidden" id="email-1" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          année
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? anne validation -->
+                  <!-- ? description -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <textarea  formcontrolName="description" class="form-control"  rows="6"></textarea><label class="form-label" style="box-shadow: 0px 0px;width: 243.5625px;font-family: Actor, sans-serif;">
+                          Description et objectif du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? description validation -->
+
+              </form>
+          </div>
+          <!-- ? dismiss modal -->
+          <div class="modal-footer" style="background: #f1f5f8;"><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="color: var(--bs-gray-900);background: var(--bs-gray-300);">
+              fermer
+          </button>
+          <!-- ? enregistrer -->
+          <button [disabled]="valid.invalid"  (click)="Upload()"  class="btn btn-primary disabled" type="submit" disabled="">
+              enregistrer
+          </button></div>
+      </div>
+  </div>
+</div>
+<!-- ? modal ancien pfe -->
+<div class="modal fade" role="dialog" tabindex="-1" id="ancien">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <!-- ? header modal -->
+          <div class="modal-header d-md-flex justify-content-lg-center" style="background: #f1f5f8;">
+              <div class="d-md-flex justify-content-md-center">
+                  <h4 class="modal-title text-center d-lg-flex justify-content-lg-center" style="color: var(--bs-gray-900);">Vous remplissez un ancien PFE</h4>
+              </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- ? body modal -->
+          <div class="modal-body" style="background: #f1f5f8;">
+              <form enctype="multipart/form-data" #valid="ngForm" [formGroup]="pfeValidation">
+                  <!-- ? titre -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input   formControlName="titre" class="form-control color-bm" type="text" id="email-2" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          titre du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? niveau -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div  class="mb-0 form-floating controls pb-2"><select class="form-select"  style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                              <option value="Licence">Licence</option>
+                              <option >master</option>
+                              <option>Cycle</option>
+                          </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                              Niveau
+                          </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? année -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input  formControlName="anne" class="form-control color-bm" type="text" id="email-3" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          année
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? description -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <textarea    formControlName="description" class="form-control" rows="6" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"></textarea><label class="form-label" style="width: 243.5625px;font-family: Actor, sans-serif;">
+                          Description et objectif du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <label class="form-label" style="margin-bottom: 3px;">
+                      Page de garde : A4
+                  </label>
+                  <!-- ? page de garde -->
+                  <input  (change)="chargephoto($event)" formControlName="pageGard" class="form-control form-control-lg" type="file" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);margin-bottom: 9px;">
+                  <label class="form-label" style="margin-bottom: 4px;">
+                      rapport (.pdf)
+                  </label>
+                  <!-- ? rapport -->
+                  <input    (change)="chargerapport($event)"   formControlName="rapport" class="form-control form-control-lg" type="file" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);">
+              </form>
+          </div>
+          <!-- ? footer modal -->
+          <div class="modal-footer" style="background: #f1f5f8;">
+          <!-- ? dismiss modal -->
+              <button class="btn btn-light" type="button" data-bs-dismiss="modal" style="color: var(--bs-gray-900);background: var(--bs-gray-300);">
+              fermer
+          </button>
+          <!-- ? enregistrer -->
+          <button (click)="Upload()"  class="btn btn-primary " type="submit" >
+              enregistrer
+          </button></div>
+      </div>
+  </div>
+</div>
+

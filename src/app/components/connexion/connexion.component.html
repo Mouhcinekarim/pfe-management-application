@@ -1,0 +1,68 @@
+<body style="color: rgb(33, 37, 41);">
+  <div class="container">
+      <div></div>
+  </div>
+  <div class="container" style="margin-top: 18px;margin-bottom: 15px;">
+      <div class="row d-flex d-sm-flex d-md-flex justify-content-center justify-content-sm-center justify-content-md-center">
+          <div class="col-8 col-sm-7 col-md-7 col-lg-4 col-xl-4 col-xxl-4" style="text-align: center;background: var(--bs-gray-200);border-radius: 16px;box-shadow: 0px 0px 5px 0px var(--bs-white);">
+              <form #valid="ngForm" [formGroup]="connexionValidation" (ngSubmit)="Connexion()" ><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-person-fill" style="font-size: 111.52px;color: var(--bs-indigo);margin-top: 46px;">
+                      <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+                  </svg>
+                        <!-- ? email -->
+                  <div class="control-group" style="margin-top: 42px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input formControlName="email"  [(ngModel)]="connexion.email" class="form-control color-bm" type="email" name="email" id="email" required="" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-gray-200);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
+                          Email
+                        </label></div>
+                  </div>
+
+                  <!-- ? validation email -->
+                  <div *ngIf="email.touched && email.invalid">
+                      <div *ngIf="email.errors['required']">
+                          <small class="form-text text-danger help-block">
+                              Email est requis
+                          </small>
+                      </div>
+                      <div *ngIf="email.errors['email']">
+                          <small class="form-text text-danger help-block">
+                              Email invalide
+                          </small>
+                      </div>
+                  </div>
+
+                        <!-- ? password -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input formControlName="password" name="password" [(ngModel)]="connexion.password" class="form-control color-bm" type="password" id="mot-de-passe" required="" placeholder="Mot de passe" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-gray-200);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);margin-bottom: 0px;" minlength="8"><label class="form-label" style="width: 123.5625px;font-family: Actor, sans-serif;">
+                          Mot de passe
+                        </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+
+                  <!-- ? validation password -->
+                  <div *ngIf="password.touched && password.invalid">
+                    <div *ngIf="password.errors['required']">
+                        <small class="form-text text-danger help-block">
+                            Mot de passe est requis
+                        </small>
+                    </div>
+                    <div *ngIf="password.errors['minlength']">
+                        <small class="form-text text-danger help-block">
+                            Le mot de passe doit contenir au moins 8 caractères
+                        </small>
+                    </div>
+                </div>
+                  <p class="mt-4">Vous n'êtes pas inscrit ?&nbsp;<a href="#" data-bs-target="#modal-1" data-bs-toggle="modal">Inscription</a></p>
+                    <!-- ? Toast -->
+                  <div class="alert-success w-100"  *ngIf="this.inscriptionMsg!= ''">
+                   <!-- [ngStyle]="{'background-color': 'green'}" -->
+                   <p >{{inscriptionMsg}}</p>
+                   <!-- class="register-success-text" -->
+                  </div>
+              </form><button [disabled]="valid.invalid" (click)="Connexion()" class="btn btn-primary" type="submit" style="margin-bottom: 25px;margin-top: 10px;border-width: 0px;background: var(--bs-indigo);">Connexion</button>
+              <div class="login-failed" *ngIf='this.isError'>
+                <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
+              </div>
+          </div>
+      </div>
+  </div>
+  </body>

@@ -1,0 +1,54 @@
+ <h1 class="text-center">Chat-component (colonne à droite)</h1>
+ <!-- TODO : column -->
+    <div class="container">
+      <!--  -->
+        <div class="row">
+
+            <div class="col-6 offset-lg-0 order-last" style="background: var(--bs-light);">
+                <p class="text-break"><strong>Text</strong> edddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd</p>
+                <ul>
+                    <li><strong>Type </strong>: rapport</li>
+                    <li><a href="#">Telecharger</a></li>
+                </ul>
+            </div>
+            <div class="col"></div>
+        </div>
+    </div>
+    <div style="width: 762px;"></div>
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" data-bs-scroll="true" data-bs-backdrop="false" id="message" style="margin-left:200px;border-width: 0px;border-color: var(--bs-purple);height: 359.688px;">
+        <div class="offcanvas-body">
+            <div class="d-flex d-md-flex justify-content-center justify-content-md-end">
+              <button style="box-shadow: 0px 0px;" class="btn btn-primary" type="button" data-bs-dismiss="offcanvas"><i class="fas fa-chevron-circle-down fs-1"></i></button></div>
+            <div class="container w-75">
+                <form enctype="multipart/form-data" #valid="ngForm" [formGroup]="messages" style="margin-top: 0px;">
+                    <div class="control-group" style="margin-top: 42px;">
+                        <div class="mb-0 form-floating controls pb-2"><textarea class="form-control"></textarea><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
+                            Message
+                        </label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <!-- ? fichier -->
+                    <input class="form-control" type="file">
+                    <!-- ? type -->
+                    <select class="form-select" style="margin-top: 9px;">
+                        <optgroup label="type">
+                            <option value="1">page de garde</option>
+                            <option value="2">rapport</option>
+                            <option value="3">autre</option>
+                        </optgroup>
+                    </select>
+                    <div class="d-flex d-sm-flex d-lg-flex justify-content-center justify-content-sm-center justify-content-lg-center"><button [disabled]="valid.invalid" class="btn btn-primary disabled" type="button" style="box-shadow: 0px 0px;margin-top: 15px;margin-bottom: 8px;" disabled="">
+                        Envoyer&nbsp;
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-send-fill fs-1">
+                                <path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65l-.095.038L.767 5.854l-.001.001-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.563 2.903.432.275.275.432 2.903 4.563.002.002.26.41a.5.5 0 0 0 .886-.083l.181-.453L15.926.78l.038-.095Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"></path>
+                            </svg></button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- ? container bottom fixed -->
+    <div class="container d-sm-flex d-md-flex justify-content-sm-center justify-content-md-center w-25 fixed-bottom" style="margin-bottom: 17px;">
+      <button style="box-shadow: 0px 0px;" class="btn btn-primary" type="button" data-bs-target="#message" data-bs-toggle="offcanvas"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-send-plus-fill fs-1">
+                <path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 1.59 2.498C8 14 8 13 8 12.5a4.5 4.5 0 0 1 5.026-4.47L15.964.686Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494ZM16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 1 .5.5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 .5-.5Z"></path>
+            </svg>
+        </button>
+    </div>

@@ -1,0 +1,199 @@
+<!-- <div style="width: 100%; min-height: 480px;" class="message-col">
+    <div id="msg-container" class="message-container overflow-auto" style="height: 500px;">
+      <div *ngFor="let message of filteredMessages" class="message-item"
+        [style.background]="message.sender === username ? 'rgba(80,150,220, 0.4)':'rgba(150,150,150, 0.3)'">
+        <div mat-list-icon>chat</div>
+        <h4 mat-line><b>{{message.sender === username ? 'You': message.sender}}</b>: {{message.content}}</h4>
+        <div *ngIf="message.fichier!==null">
+          <div >{{message.type}}</div><button  (click)="Doawload(message.fichier,message.type,message.type=='Rapport'?'PDF':'PNG')"> Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div style="width:100%; height: 40px;">
+    <div style="width: 85%;">
+      <form  enctype="multipart/form-data">
+        <input matInput name="fichier" placeholder="New message" [disabled]="channel === null || channel === undefined"
+        class="message-input" [(ngModel)]="newMessage" (keyup)="$event.keyCode == 13 ? sendMessage() : null">
+        <input type="file" name="file"   (change)="chargerapport($event)"><br>
+        <select  [(ngModel)]="newTyp" name="type">
+          <option>Rapport</option>
+          <option>Page de garde</option>
+        </select>
+      </form>
+      
+    </div>
+    <button mat-raised-button [disabled]="channel === null || channel === undefined" style="width: 13%;"
+      (click)="sendMessage()">Send</button>
+  </div>
+ -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+      <div  *ngIf="channel != null || channel != undefined"  class="row d-lg-flex align-items-lg-center overflow-auto" style="max-height: 500px;">
+        <div *ngFor="let message of filteredMessages" class="col-6 col-lg-6 offset-lg-0 order-last" [style]="message.sender === username ? 'background-color:var(--bs-light);order:1;':'background-color:rgba(150,150,150, 0.3);order:1'">
+            <p class="text-break"><strong>{{message.sender === username ? 'You :': message.sender+' :'}}</strong>{{message.content}}</p>
+            <ul>
+                <li><strong>Type </strong>: {{message.type}}</li>
+                <li><a role="button" (click)="Doawload(message.fichier,message.type,message.type=='Rapport'?'PDF':'PNG')">Telecharger</a></li>
+            </ul>
+        </div>
+        
+    </div> -->
+    <!-- <div *ngIf="channel != null || channel != undefined" id="msg-container" class="row d-lg-flex align-items-lg-center overflow-auto" style="max-height: 400px;">
+      <div    class="row" style="margin-bottom:10px;border-radius:30px;" *ngFor="let message of filteredMessages">
+          <div class="col-6 offset-lg-0 "  [style]="message.sender === username ? 'background-color:var(--bs-light);order:0;':'background-color:rgba(150,150,150, 0.3);order:1;'">
+              <p class="text-break"><strong>{{message.sender === username ? 'You :': message.sender+' :'}}</strong>{{message.content}}</p>
+              <ul *ngIf="message.fichier!==null||message.type">
+                  <li><strong>Type </strong>: {{message.type}}</li>
+                  <li><a role="button" (click)="Doawload(message.fichier,message.type,message.type=='rapport'?'PDF':'PNG')">Telecharger</a></li>
+              </ul>
+          </div>
+          <div class="col"></div>
+      </div>
+  </div>
+    <div style="width:762px;"></div>
+    <div class="offcanvas offcanvas-bottom" tabindex="-1" data-bs-scroll="true" data-bs-backdrop="false" id="message" style="border-width: 0px;border-color: var(--bs-purple);height: 359.688px;margin-left: 200px;">
+      <div class="offcanvas-body">
+          <div class="d-flex d-md-flex justify-content-center justify-content-md-end"><button class="btn btn-primary" type="button" data-bs-dismiss="offcanvas"><i class="fas fa-chevron-circle-down fs-1"></i></button></div>
+          <div class="container w-75">
+              <form style="margin-top: 0px;">
+                  <div class="control-group" style="margin-top: 42px;">
+                      <div class="mb-0 form-floating controls pb-2"><textarea  [(ngModel)]="newMessage" name="e3"  class="form-control"></textarea><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">Message</label><small class="form-text text-danger help-block"></small></div>
+                  </div><input (change)="chargerapport($event)" name="swd" class="form-control" type="file"><select [(ngModel)]="newTyp" (keyup)="$event.keyCode == 13 ? sendMessage() : null" name="type" class="form-select" style="margin-top: 9px;">
+                     
+                          <option value="">page de garde</option>
+                          <option >rapport</option>
+                         
+                     
+                  </select>
+                  <div class="d-flex d-sm-flex d-lg-flex justify-content-center justify-content-sm-center justify-content-lg-center"><button  (click)="sendMessage()"  class="btn btn-primary " type="button" style="margin-top: 15px;margin-bottom: 8px;" >Envoyer&nbsp;<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-send-fill fs-1">
+                              <path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65l-.095.038L.767 5.854l-.001.001-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.563 2.903.432.275.275.432 2.903 4.563.002.002.26.41a.5.5 0 0 0 .886-.083l.181-.453L15.926.78l.038-.095Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494Z"></path>
+                          </svg></button></div>
+              </form>
+          </div>
+      </div>
+  </div>
+  <div class="container d-sm-flex d-md-flex justify-content-sm-center justify-content-md-center w-25 fixed-bottom" style="margin-bottom: 17px;"><button class="btn btn-primary" type="button" data-bs-target="#message" data-bs-toggle="offcanvas"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-send-plus-fill fs-1">
+              <path fill-rule="evenodd" d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 1.59 2.498C8 14 8 13 8 12.5a4.5 4.5 0 0 1 5.026-4.47L15.964.686Zm-1.833 1.89.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338 7.494-7.494ZM16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-3.5-2a.5.5 0 0 1 .5.5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 0 1-1 0v-1h-1a.5.5 0 0 1 0-1h1v-1a.5.5 0 0 1 .5-.5Z"></path>
+          </svg></button></div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script> -->
+    <div class="row px-3 py-2 border-start border-muted">
+      <div class="col" style="overflow-x: none;overflow-y: auto;min-height: 420px;max-height: 420px;height: auto;">
+          <ul class="list-unstyled" *ngIf="channel != null || channel != undefined" >
+              <!-- <li class="my-2" >
+                  <div class="card border border-muted" style="width: 65%;border-top-left-radius: 0px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;background: rgba(52,58,64,0.05);">
+                      <div class="card-body text-center p-2">
+                          <p class="text-start card-text" style="font-size: 1rem;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                          <div id="fichier" style="margin-bottom: 7px;"><i class="fa fa-file-text-o d-lg-flex justify-content-lg-start" style="height: 43px;color: var(--bs-red);font-size: 30px;width: 30.583px;padding-top: 7px;"></i>
+                              <h5 style="margin-top: 11px;margin-bottom: 14px;margin-right: 0px;margin-left: 16px;width: 106.0729px;">Rapport</h5><i class="fa fa-download d-lg-flex justify-content-lg-end align-items-lg-center" style="height: 43px;color: rgba(0,0,0,0.93);font-size: 30px;width: 30.583px;margin-right: 0px;margin-left: 0px;margin-bottom: 0px;margin-top: 0px;"></i>
+                          </div>
+                          <h6 class="text-muted card-subtitle text-end" style="font-size: .75rem;">Julio 22, 2021. 12:33 P.M.</h6>
+                      </div>
+                  </div>
+              </li> -->
+              <!-- <li class="d-flex justify-content-end my-2">
+                <div class="card border border-muted" style="width: 65%;border-top-left-radius: 20px;border-top-right-radius: 0px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;background: rgba(124,66,248,0.76);color: rgb(255,255,255);">
+                    <div class="card-body text-center p-2">
+                        <p class="text-start card-text" style="font-size: 1rem;">Nullam id dolor id nibh ultricies vehicula ut id elit. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus.</p>
+                        <div id="fichier" style="margin-bottom: 7px;"><i class="fa fa-file-text-o d-lg-flex justify-content-lg-start" style="height: 43px;color: var(--bs-red);font-size: 30px;width: 30.583px;padding-top: 7px;"></i>
+                            <h5 style="margin-top: 11px;margin-bottom: 14px;margin-right: 0px;margin-left: 16px;width: 106.0729px;">Rapport</h5><i class="fa fa-download d-lg-flex justify-content-lg-end align-items-lg-center" style="height: 43px;color: var(--bs-gray-900);font-size: 30px;width: 30.583px;margin-right: 0px;margin-left: 0px;margin-bottom: 0px;margin-top: 0px;"></i>
+                        </div>
+                        <h6 class="text-muted card-subtitle text-end" style="font-size: .75rem;color: rgb(255,255,255);">Julio 22, 2021. 12:33 P.M.</h6>
+                    </div>
+                </div>
+              </li> -->
+              <div *ngFor="let message of filteredMessages;">
+                <li class="my-2" [ngClass]="message.sender === username? 'd-flex justify-content-end my-2':'my-2'">
+                  <div class="card border border-muted" [style]="message.sender === username? 'width: 65%;border-top-left-radius: 20px;border-top-right-radius: 0px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;background: rgba(124,66,248,0.76);color: rgb(255,255,255);':'width: 65%;border-top-left-radius: 0px;border-top-right-radius: 20px;border-bottom-right-radius: 20px;border-bottom-left-radius: 20px;background: rgba(52,58,64,0.05);'">
+                      <div class="card-body text-center p-2">
+                          <p class="text-start card-text" style="font-size: 1rem;">{{message.content}}</p>
+                          <div id="fichier" *ngIf="message.fichier!==null||message.type!==null" style="margin-bottom: 7px;"><i class="fa fa-file-text-o d-lg-flex justify-content-lg-start" style="height: 43px;color: var(--bs-red);font-size: 30px;width: 30.583px;padding-top: 7px;"></i>
+                              <h5 style="margin-top: 11px;margin-bottom: 14px;margin-right: 0px;margin-left: 16px;">{{message.type}}</h5><a role="button"  (click)="Doawload(message.fichier,message.type,message.type=='Rapport'?'PDF':'PNG')"><i class="fa fa-download d-lg-flex justify-content-lg-end align-items-lg-center" style="height: 43px;color: rgba(0,0,0,0.93);font-size: 30px;width: 30.583px;margin-right: 0px;margin-left: 0px;margin-bottom: 0px;margin-top: 0px;"></i></a>
+                          </div>
+                          <h6 class="card-subtitle text-end" [style]="message.sender == username?'font-size: .75rem;color: rgb(255,255,255);':'font-size: .75rem;'" >{{message.timestamp}}</h6>
+                      </div>
+                  </div>
+              </li>
+
+              </div>
+        
+             
+          </ul>
+      </div>
+  </div>
+  <div class="row px-3 py-2"  *ngIf="channel != null || channel != undefined" style="background: rgba(52,58,64,0.2);">
+      <div class="col-9 col-sm-10 col-md-10 col-lg-10 col-xl-10" style="padding: 0;"><textarea [(ngModel)]="newMessage" name="message" class="w-100 h-100 border-0" style="border-radius: 27px;resize: none;padding-right: 0;padding-left: 30px;"></textarea></div>
+      <div class="col-3 col-sm-2 col-md-2 col-lg-2 col-xl-2 text-nowrap d-md-flex justify-content-md-end p-0"><button name="buttonfichier"  data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn h-100 mx-auto" type="button" style="border-radius: 10px;"><i class="fas fa-file-upload" style="font-size: 31px;"></i></button><button name="buttonenvoyer"  (click)="sendMessage()"  class="btn btn-light h-100 w-auto" type="button" style="border-radius: 10px;"><i class="fab fa-telegram-plane"></i></button></div>
+  </div>
+     
+
+  <!-- ---------------------Modal de fichier -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Envoyer fichers</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" style="background: #f1f5f8;">
+        <form enctype="multipart/form-data">
+          <div class="control-group" style="margin-top: 5px;">
+            <div class="mb-0 form-floating controls pb-2"><select  [(ngModel)]="newTyp" name="type" class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                    <option >Rapport</option>
+                    <option >Page garde</option>
+                
+                </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                    Type de fichier
+                </label><small class="form-text text-danger help-block"></small></div>
+        </div>
+        <label class="form-label" style="margin-bottom: 4px;">
+         fichier
+      </label>
+      <!-- ? rapport -->
+      <input    (change)="chargerapport($event)"   formControlName="rapport" class="form-control form-control-lg" type="file" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);">
+
+        </form>
+        </div>
+        <div class="modal-footer">
+        
+          <button type="button" class="btn btn-primary">Save </button>
+        </div>
+      </div>
+    </div>
+  </div>
