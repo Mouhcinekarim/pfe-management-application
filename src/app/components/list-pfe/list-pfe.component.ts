@@ -16,49 +16,68 @@ export class ListPfeComponent implements OnInit {
      
      pfechoi:PFEfile
 
-     
+     titre:string;
      niveuxSet:Set<string>;
      anneSet:Set<number>;
      annes:number[];
-   
+     listpfeFilter:PFEfile[];
   constructor(private fileService:ServicePfeService) { }
 
   ngOnInit(): void {
-    console.log("hello")
     this.anneSet=new Set<number>();
     this.anneSet=new Set<number>();
     this.annes;
     this.niveuxSet=new Set<string>();
-    console.log()
+
     this.fileService.getListPfeByIdProf('hichame@gmail.com').subscribe((resp)=>{
           this.annes=new Array<number>();
           this.listpfe=resp;
-         
-          this.listpfe.forEach((pfe)=>{
-            this.annes.push(pfe.anne)
+          this.listpfeFilter=resp;
+          this.search()
+        //   this.listpfe.forEach((pfe)=>{
+        //     this.annes.push(pfe.anne)
           
-         })
+        //  })
           
-         this.annes.sort((a,b)=>b-a);
+        //  this.annes.sort((a,b)=>b-a);
   
-         this.annes.forEach((anne) =>this.anneSet.add(anne))
+        //  this.annes.forEach((anne) =>this.anneSet.add(anne))
       
-         console.log(this.anneSet)
+        //  console.log(this.anneSet)
         
         
     })
   }
+  search(){
+  
+  if(this.titre==null) this.titre='';
+   
+  this.listpfeFilter=this.listpfe.filter((pfe)=>pfe.titre.indexOf(this.titre)!==-1);
+  console.log( this.listpfeFilter);
+  this.getanne();
+  }
 
+
+  getanne(){
+  
+    this.listpfeFilter.forEach((pfe)=>{
+      this.annes.push(pfe.anne)
+    })
+    this.annes.sort((a,b)=>b-a);
+  
+    this.annes.forEach((anne) =>this.anneSet.add(anne))
+   this.anneSet;
+  }
  
   getListPfeByniveu(niveux:String,anne:number){
-    return this.listpfe.filter((pfe)=> (pfe.niveau==niveux&&pfe.anne==anne))
+    return this.listpfeFilter.filter((pfe)=> (pfe.niveau==niveux&&pfe.anne==anne))
 
   }
 
 
    getListniveuxByanne(anne:number){
     this.niveuxSet=new Set<string>();
-     this.listpfe.filter((pfe)=> (pfe.anne==anne)).forEach((pfe)=>{ 
+    this.listpfeFilter.filter((pfe)=> (pfe.anne==anne)).forEach((pfe)=>{ 
       console.log(pfe.anne)
       console.log(pfe) 
       this.niveuxSet.add(pfe.niveau);})

@@ -79,7 +79,7 @@
             <hr class="sidebar-divider my-0" />
             <div class="container" style="width: 320px; ">
                 <div id="accordionSidebar" class="navbar-nav ">
-                    <div class="nav-item container " style="margin-bottom: 20px;"><input class="float-start float-sm custom-search-input" type="search" placeholder="Type to filter by address" /></div>
+                    <div class="nav-item container " style="margin-bottom: 20px;"><input name="titresearch" [(ngModel)]="titre" (input)="search()" class="float-start float-sm custom-search-input" type="search" placeholder="Type to filter by address" /></div>
                     
                     <div class="nav-item" *ngFor="let anne of this.anneSet">
                         <div  id="headingOne">

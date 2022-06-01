@@ -136,5 +136,12 @@ export class ServicePfeService {
         getProfTitre(email:string,niveux:string){
       return this.http.get<PFE[]>(`${this.server}/PFE/PFE?idprof=${email}&niveux=${niveux}`)
     }
+        
+        UpdateDescription(idpfe,description){
+console.log(idpfe,description)
+  return this.http.put(`${this.server}/PFE/updatedescription?idpfe=${idpfe}`, description,{
+          observe:'response'
+        });
+        }
 
 }

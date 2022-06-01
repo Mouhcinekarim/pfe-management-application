@@ -72,7 +72,7 @@
                   <!--  -->
                   <!-- ? niveau -->
                   <div class="control-group" style="margin-top: 5px;">
-                      <div class="mb-0 form-floating controls pb-2"><select  class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                      <div class="mb-0 form-floating controls pb-2"><select  formControlName="niveux"  class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
                               <option >Licence</option>
                               <option >master</option>
                               <option >Cycle</option>
@@ -91,7 +91,7 @@
                   <!-- ? description -->
                   <div class="control-group" style="margin-top: 5px;">
                       <div class="mb-0 form-floating controls pb-2">
-                          <textarea  formcontrolName="description" class="form-control"  rows="6"></textarea><label class="form-label" style="box-shadow: 0px 0px;width: 243.5625px;font-family: Actor, sans-serif;">
+                          <textarea  formControlName="description" class="form-control"  rows="6"></textarea><label class="form-label" style="box-shadow: 0px 0px;width: 243.5625px;font-family: Actor, sans-serif;">
                           Description et objectif du projet
                       </label><small class="form-text text-danger help-block"></small></div>
                   </div>
@@ -104,7 +104,7 @@
               fermer
           </button>
           <!-- ? enregistrer -->
-          <button [disabled]="valid.invalid"  (click)="Upload()"  class="btn btn-primary disabled" type="submit" disabled="">
+          <button   (click)="Upload()"  class="btn btn-primary" type="submit">
               enregistrer
           </button></div>
       </div>

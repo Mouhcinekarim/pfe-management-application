@@ -6,7 +6,7 @@ import {ChannelService} from 'src/app/service/channel.service'
 import {MessageService} from 'src/app/service/message.service'
 import { RxStompService } from '@stomp/ng2-stompjs';
 import {GroupPfe} from 'src/app/model/GroupPfe';
-
+import {ServicePfeService} from 'src/app/service/service-pfe.service';
 @Component({
   selector: 'app-list-user',
   templateUrl: './list-user.component.html',
@@ -25,7 +25,9 @@ export class ListUserComponent implements OnInit {
   groupe:GroupPfe[];
   niveuxSet=new Set<string>();
   group:GroupPfe;
-  constructor(private userService: UserService, private channelService: ChannelService, private stompService: RxStompService,private messageService: MessageService) { }
+  desable:boolean;
+  newDesc:string;
+  constructor(private userService: UserService, private channelService: ChannelService,private fileService:ServicePfeService, private stompService: RxStompService,private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.userService.findUsers(this.role,this.username).subscribe(
@@ -139,6 +141,10 @@ conferme_pfe(pfe_id:number,channel:string){
   });
 
 }
+desableinput(user:User){
+  this.newDesc=user.description;
+  this.desable=true;
+}
 // showNotification(message: Message) {
 //   const snackBarRef = this.snackBar.open('New message from ' + message.sender, 'Show', { duration: 3000 });
 //   this.highlightedUsers.push(message.sender);
@@ -148,5 +154,15 @@ conferme_pfe(pfe_id:number,channel:string){
 //       this.channel = ChannelService.createChannel(this.username, message.sender);
 //       this.channelService.refreshChannel(this.channel);
 //   });
+saveModifier(user:User){
+  user.description=this.newDesc;
+  this.fileService.UpdateDescription(user.pfeInfoId,this.newDesc).subscribe();
+  this.desable=false;
+  this.newDesc=null
+}
+
+annulModifier(){
+  this.desable=false;
+}
 }
 

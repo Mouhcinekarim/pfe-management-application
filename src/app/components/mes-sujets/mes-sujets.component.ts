@@ -109,7 +109,8 @@ chargephoto(event:any){
 Upload(){
   this.pfe.titre=this.titre.value;
   this.pfe.niveau=this.niveux.value
-  this.pfe.description=this.description.value
+  this.pfe.description=this.description.value;
+  alert(this.description.value)
   this.pfe.anne=this.anne.value
   console.log(this.pfe)
   var formdata = new FormData();

@@ -1,5 +1,5 @@
 export interface GroupPfe {
-    PfeInfoId:number;
+    pfeInfoId:number;
 	email:string;
 	description:string;
 	titre:string;	
