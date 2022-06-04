@@ -35,7 +35,7 @@
     </div>
 </div>
 <div  *ngIf="role=='groupe'">
-    <div class="row" style="min-height:500px ;">
+    <div class="row" >
         <div class="col-lg-12"  *ngFor="let user of users " style="margin-top: 50px;" >
             <h4 class="text-center" style="color: black;">Titre du projet: {{user.titre}}</h4>
             <p style="color:white;"><strong>Encadrant : {{user.nom_prof}} {{user.prenom_prof}}</strong></p>

@@ -32,17 +32,18 @@
 	</div>
 </body>
 </html>			 -->
-<body style="">
+<body>
     
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-lg-4 col-xl-4" style="background: rgb(190,38,221);
+    <div class="row" >
+        <div class="col-lg-4 col-xl-4" style="min-height:500px ;max-height: 560px;height: auto;overflow-x: none;overflow-y: auto;background: rgb(190,38,221);
        background: linear-gradient(139deg, #c786fb 0%, rgb(203,96,241) 28%, rgb(183,89,198) 65%, #bc2bae 100%), var(--bs-purple);">
             <app-list-user [username]="id_user" [role]="role"  class="user-container">
             </app-list-user>
         </div>
-        <div class="col-sm-8 d-lg-block d-xl-block">
+        <div class="col-sm-8 d-lg-block d-xl-block" style="min-height:500px ;max-height: 560px;height: auto;background: linear-gradient(160deg, rgba(231,200,237,0.39), rgba(251,237,209,0.68) 49%, rgba(251,237,209,0.68) 86%); ">
+          
             <app-messages [username]="id_user" [role]="role" class="message-wrapper">
             </app-messages>	
         </div>
