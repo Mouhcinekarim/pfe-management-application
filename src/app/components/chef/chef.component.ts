@@ -40,7 +40,7 @@ export class ChefComponent implements OnInit {
     this.fileService.mellangeGroupPfe(this.email_prof,this.niveux).subscribe((rsp)=>{
       console.log(rsp)
       this.Listmellane=rsp;
-     this.createPdf(this.Listmellane)
+   if( this.Listmellane!=null)  this.createPdf(this.Listmellane)
     });
   }
 
@@ -50,8 +50,8 @@ export class ChefComponent implements OnInit {
    data.forEach(element => {
     // tslint:disable-next-line:max-line-length
     let etudinat:string=''
-    element.etudiant.forEach((etd)=> etudinat+=`${etd.nom} ${edd.prenom}   `)
-    const temp = [`${element.nom} ${element.prenom}
+    element.etudiant.forEach((etd)=> etudinat+=`${etd.nom} ${etd.prenom}   `)
+    const temp = [`${element.nom} ${element.prenom} 
     ${element.email}`, element.titre,etudinat];
     rows.push(temp);
   
@@ -60,21 +60,21 @@ export class ChefComponent implements OnInit {
 
     doc.setFontSize(18);
     doc.text(`List de PFE de : ${this.niveux}`, 11, 8);
-    doc.setFontSize(11);
+    doc.setFontSize(16);
     doc.setTextColor(100);
-
+   
 
     (doc as any).autoTable({
       head: this.head,
       body: rows,
-      theme: 'plain',
+      theme: 'striped',
       didDrawCell: data => {
         console.log(data.column.index)
       }
     })
 
     // below line for Open PDF document in new tab
-    doc.output(`PFEs ${this.niveux}`)
+    doc.output("dataurlnewwindow")
 
     // below line for Download PDF document  
     doc.save(`PFEs ${this.niveux}`);
