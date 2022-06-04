@@ -103,7 +103,8 @@
               "src/styles.css",
               "src/styles1.min.css"
             ],
-            "scripts": []
+            "scripts": [    "node_modules/jspdf/dist/jspdf.es.min.js",
+              "node_modules/jspdf-autotable/dist/jspdf.plugin.autotable.js"]
           }
         }
       }

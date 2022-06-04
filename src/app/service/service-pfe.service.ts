@@ -3,10 +3,10 @@ import { Injectable } from '@angular/core';
 import { Group } from '../model/groupe';
 import { GroupPfe } from '../model/GroupPfe';
 import { PFE } from '../model/PFE';
-import { PFEinfo } from '../model/PFEinfo';
+
 import { PFEfile } from '../model/PFEfile';
 import { Prof } from '../model/Prof';
-
+import { PfeGroupProf } from '../model/PfeGroupProf';
 @Injectable({
   providedIn: 'root'
 })
@@ -67,7 +67,7 @@ export class ServicePfeService {
 
       
      mellangeGroupPfe(email:string,niveux:string){
-      return this.http.get(`${this.server}/PFE/melange?niveux=${niveux}&idprof=${email}`)
+      return this.http.get<PfeGroupProf[]>(`${this.server}/PFE/melange?niveux=${niveux}&idprof=${email}`)
 
     }
         getEtudiantGroup(email:string,niveux:string){
