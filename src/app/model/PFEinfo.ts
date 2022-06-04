@@ -5,7 +5,7 @@ export class PFEinfo{
      description:string;
      anne:number;
      stage:boolean;
-     
+    
      rapport1:string;
      photo1:string;
      conferm:boolean=false;

@@ -138,6 +138,8 @@ subscribeToOtherUser(otherUser): string {
 conferme_pfe(pfe_id:number,channel:string){
   this.userService.conferme(channel,pfe_id).subscribe(()=>{
     this.channel=null;
+    window.location.reload();
+
   });
 
 }

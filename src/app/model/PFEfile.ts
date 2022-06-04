@@ -1,8 +1,8 @@
 import { PFEinfo } from "./PFEinfo";
 
-export class PFEfile extends PFEinfo{
+export interface PFEfile extends PFEinfo{
     photo:any;
     rapport:any;
     pfeInfoId:number;
-
+    group:boolean;
 }

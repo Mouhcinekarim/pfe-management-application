@@ -14,7 +14,7 @@
                     <!-- ? nom -->
                     <div class="control-group">
                         <div class="mb-0 form-floating controls pb-2">
-                          <input formControlName="nom" required [(ngModel)]="inscription.nom" name="nom" class="form-control color-bm" type="text" id="email" placeholder="Nom" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
+                          <input formControlName="nom" required [(ngModel)]="prof.nom"  class="form-control color-bm" type="text" id="email" placeholder="Nom" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
                           <label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
                             Nom
                           </label><small class="form-text text-danger help-block"></small></div>
@@ -40,7 +40,7 @@
                     <!-- ? prenom -->
                     <div class="control-group">
                         <div class="mb-0 form-floating controls pb-2">
-                          <input formControlName="prenom" [(ngModel)]="inscription.prenom" name="prenom" class="form-control color-bm" type="text" id="email-2" placeholder="Prenom" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
+                          <input formControlName="prenom" [(ngModel)]="prof.prenom" name="prenom" class="form-control color-bm" type="text" id="email-2" placeholder="Prenom" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
                             Prenom
                           </label><small class="form-text text-danger help-block"></small></div>
                     </div>
@@ -67,7 +67,7 @@
                     <!--? email -->
                     <div class="control-group">
                         <div class="mb-0 form-floating controls pb-2">
-                          <input formControlName="email" required [(ngModel)]="inscription.email" name="email" class="form-control color-bm" type="email" id="email-1" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
+                          <input formControlName="email" required [(ngModel)]="prof.email" name="email" class="form-control color-bm" type="email" id="email-1" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">
                             Email
                           </label><small class="form-text text-danger help-block"></small></div>
                     </div>
@@ -92,7 +92,7 @@
                     <!-- ? password -->
                     <div class="control-group">
                         <div  class="mb-0 form-floating controls pb-2">
-                          <input formControlName="password" [(ngModel)]="inscription.password" name="password" required class="form-control color-bm" type="password" id="mot-de-passe" placeholder="Mot de passe" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);" minlength="8"><label class="form-label" style="width: 123.5625px;font-family: Actor, sans-serif;">Mot de passe</label><small class="form-text text-danger help-block"></small></div>
+                          <input formControlName="password" [(ngModel)]="prof.password" name="password" required class="form-control color-bm" type="password" id="mot-de-passe" placeholder="Mot de passe" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);" minlength="8"><label class="form-label" style="width: 123.5625px;font-family: Actor, sans-serif;">Mot de passe</label><small class="form-text text-danger help-block"></small></div>
                     </div>
                     <!-- ? password validation -->
                     <div *ngIf="password.touched && password.invalid">
@@ -111,7 +111,7 @@
                     <div class="control-group">
                         <div class="mb-0 form-floating controls pb-2">
                           <!-- TODO: [ngModel] -->
-                          <select  class="form-select color-bm" placeholder="Name" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
+                          <select formControlName="departement" [(ngModel)]="prof.departementId" class="form-select color-bm" placeholder="Name" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
                                 <option value="1">Informatique</option>
                                 <option value="2">Mathématiques</option>
                             </select><label class="form-label" style="width: 81.5625px;font-family: Actor, sans-serif;">Département</label><small class="form-text text-danger help-block"></small></div>

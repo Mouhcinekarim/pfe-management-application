@@ -79,18 +79,18 @@
             <hr class="sidebar-divider my-0" />
             <div class="container" style="width: 320px; ">
                 <div id="accordionSidebar" class="navbar-nav ">
-                    <div class="nav-item container " style="margin-bottom: 20px;"><input name="titresearch" [(ngModel)]="titre" (input)="search()" class="float-start float-sm custom-search-input" type="search" placeholder="Type to filter by address" /></div>
+                    <div class="nav-item container " style="margin-bottom: 20px;font-family: 'Alegreya Sans SC', sans-serif;"><input name="titresearch" [(ngModel)]="titre" (input)="search()" class="float-start float-sm custom-search-input" type="search" placeholder="Type to filter by address" /></div>
                     
-                    <div class="nav-item" *ngFor="let anne of this.anneSet">
+                    <div class="nav-item" *ngFor="let anne of this.anneSet" style="color:white ; ">
                         <div  id="headingOne">
-                            <a  class="nav-link collapsed collapse" type="button"  data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" id="sidenavAccordion2"  aria-expanded="true" aria-controls="collapseLayouts2"><span> {{anne}}</span>
+                            <a  class="nav-link collapsed collapse" type="button"  data-bs-toggle="collapse" data-bs-target="#collapseLayouts2" id="sidenavAccordion2"  aria-expanded="true" aria-controls="collapseLayouts2" style="color:black"><span> {{anne}}</span>
                             </a>
                             <div id="collapseLayouts2" [ngClass]="'collapse'"  >
                                 <div *ngFor="let niveau of getListniveuxByanne(anne)">
-                                <div class="text-light" style="padding-left:10% ;"><span>{{niveau}}</span></div>
-                                <div class="sb-sidenav-menu-nested text-center " *ngFor="let pfe of getListPfeByniveu(niveau,anne)">
+                                <div class="text-light" style="padding-left:10% ;margin-top: 4px;font-family: 'Alegreya Sans SC', sans-serif;font-size: 15px;color:white ;"><span>{{niveau}}</span></div>
+                                <div class="sb-sidenav-menu-nested text-center " *ngFor="let pfe of getListPfeByniveu(niveau,anne)" style="border-bottom: 2px solid white;">
                                     <a class="nav-link " style="width: 300px; " role="button" (click)="pfechoi=pfe">
-                                        <p class="text-break" > {{pfe.titre}} </p>
+                                        <p class="text-break" style="font-family: 'Alegreya Sans SC', sans-serif;font-size: 18px;color:white ;" > {{pfe.titre}} </p>
                                     </a>
                                    
                                 </div>                                </div>    

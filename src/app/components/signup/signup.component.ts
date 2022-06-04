@@ -27,7 +27,7 @@ export class SignupComponent implements OnInit {
   }
 
   Inscription(){
-    this.inscriptionService.Inscription(this.inscription).subscribe(() => {
+    this.inscriptionService.InscriptionProf(this.inscription).subscribe(() => {
       this.router.navigate(['/login'],
       { queryParams: { registered:'true'}}
       );

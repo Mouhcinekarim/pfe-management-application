@@ -5,6 +5,8 @@ import { Component, OnInit } from '@angular/core';
 import { Connexion } from 'src/app/model/connexion';
 import { Etudiant } from 'src/app/model/Etudiant';
 import { ServicePfeService } from 'src/app/service/service-pfe.service';
+import { LoginService } from 'src/app/service/login.service';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-inscription-groupe',
@@ -18,7 +20,7 @@ export class InscriptionGroupeComponent implements OnInit {
   groupe:Group;
   etudiant:Etudiant;
 
-  constructor(private fileService:ServicePfeService) { }
+  constructor(private fileService:ServicePfeService,private inscriptionService:LoginService,private router:Router) { }
 
   ngOnInit(): void {
     this.groupe=new Group();
@@ -105,7 +107,14 @@ export class InscriptionGroupeComponent implements OnInit {
   affiche(){
     this.groupe.etudiants=this.ListEtudiant;
     console.log(JSON.stringify(this.groupe))
-    this.fileService.SendGroup(this.groupe).subscribe();
+   // this.fileService.SendGroup(this.groupe).subscribe();
+
+    this.inscriptionService.SendGroup(this.groupe).subscribe(() => {
+      this.router.navigate(['/connexion'],
+      { queryParams: { registered:'true'}}
+      );
+    }
+    );
   }
 
 }

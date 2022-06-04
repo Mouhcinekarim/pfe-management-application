@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Inscription } from 'src/app/model/inscription';
+import { Prof } from 'src/app/model/Prof';
 import { LoginService } from 'src/app/service/login.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -15,7 +16,7 @@ export class InscriptionProfComponent implements OnInit {
 
 
   //? inscription validation
-
+  prof:Prof;
   InscriptionValidationProf = new FormGroup({
     nom : new FormControl('',
                           [
@@ -38,7 +39,8 @@ export class InscriptionProfComponent implements OnInit {
                               [
                                 Validators.required,
                                 Validators.minLength(8)
-                              ])
+                              ]),
+    departement :  new FormControl('')                         
 
   })
 
@@ -65,7 +67,9 @@ export class InscriptionProfComponent implements OnInit {
     password:''
   }
 
-  constructor(private inscriptionService:LoginService,private router:Router){}
+  constructor(private inscriptionService:LoginService,private router:Router){
+    this.prof=new Prof();
+  }
 
   ngOnInit(): void {
 
@@ -76,7 +80,7 @@ export class InscriptionProfComponent implements OnInit {
   }
 
   Inscription(){
-    this.inscriptionService.Inscription(this.inscription).subscribe(() => {
+    this.inscriptionService.InscriptionProf(this.prof).subscribe(() => {
       this.router.navigate(['/connexion'],
       { queryParams: { registered:'true'}}
       );

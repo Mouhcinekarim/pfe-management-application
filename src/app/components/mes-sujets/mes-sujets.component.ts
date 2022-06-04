@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PFEinfo } from 'src/app/model/PFEinfo';
+import { PFEfile } from 'src/app/model/PFEfile';
 import { ServicePfeService } from 'src/app/service/service-pfe.service';
-
+import { LocalStorageService } from 'ngx-webstorage';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-mes-sujets',
   templateUrl: './mes-sujets.component.html',
@@ -45,9 +47,7 @@ export class MesSujetsComponent implements OnInit {
                                 ]),
       niveux : new FormControl('',
                                 [
-                                    Validators.required,
-                                    Validators.minLength(5),
-                                    Validators.pattern('[a-zA-Z]*')
+                                  
                                 ])
 
     });
@@ -76,13 +76,21 @@ get pageGard(){
 currentTime = new Date()
 closeResult :string;
 pfe:PFEinfo;
-
-constructor(private fileService:ServicePfeService) { }
+listpfeNoConf:PFEfile[];
+email:string;
+constructor(private fileService:ServicePfeService, private localStorage:LocalStorageService,  private router:Router) { }
 
 ngOnInit(): void {
   this.pfe=new  PFEinfo();
-  this.pfe.idprof='hichame@gmail.com';
+  this.pfe.idprof= this.localStorage.retrieve('email');
+  this.email=this.localStorage.retrieve('email');
   this.pfe.stage=false;
+  
+  this.fileService.getPfeNoConfirmer(this.email).subscribe((pfe)=>{
+    this.listpfeNoConf=pfe;
+    console.log(this.listpfeNoConf)
+  
+  })
 
 }
 
@@ -110,7 +118,7 @@ Upload(){
   this.pfe.titre=this.titre.value;
   this.pfe.niveau=this.niveux.value
   this.pfe.description=this.description.value;
-  alert(this.description.value)
+  
   this.pfe.anne=this.anne.value
   console.log(this.pfe)
   var formdata = new FormData();
@@ -125,7 +133,9 @@ Upload(){
     resp => {
       console.log(resp.status)
       if(resp.status === 200) { this.pfe=new PFEinfo();
-                                this.pfe.idprof='hichame@gmail.com'
+                                this.pfe.idprof= this.localStorage.retrieve('email');
+                                
+                                window.location.reload();
 
       }
       else console.log("no 200")
@@ -149,4 +159,26 @@ Upload(){
     };
   });
 };
+
+// ---------------------PFE NO CONFIRMER
+update(pfe:PFEfile){
+  let id=pfe.pfeInfoId
+  let pf=new PFEinfo()
+  pf.titre=pfe.titre
+  pf.anne=pfe.anne
+  pf.description=pfe.description
+  pf.niveau=pfe.niveau
+
+
+
+  this.fileService.update(JSON.stringify(pf),id).subscribe(()=>  window.location.reload()
+  );
+}
+
+
+deletepfe(idpfe:number){
+  
+  this.fileService.deletePfe(idpfe).subscribe(()=>   window.location.reload());
+}
+
 }

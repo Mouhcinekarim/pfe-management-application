@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ServicePfeService} from 'src/app/service/service-pfe.service';
 import { PFEfile } from 'src/app/model/PFEfile';
-
+import { LocalStorageService } from 'ngx-webstorage';
 import 'node_modules/jquery/dist/jquery.min.js'
 import 'C:/Users/user/Desktop/PFE/Projet Angular/front-end/src/assets/assets/js/theme.js'
 import 'node_modules/popper.js/dist/umd/popper.min.js'
@@ -21,7 +21,7 @@ export class ListPfeComponent implements OnInit {
      anneSet:Set<number>;
      annes:number[];
      listpfeFilter:PFEfile[];
-  constructor(private fileService:ServicePfeService) { }
+  constructor(private fileService:ServicePfeService,private localStorage:LocalStorageService) { }
 
   ngOnInit(): void {
     this.anneSet=new Set<number>();
@@ -29,7 +29,7 @@ export class ListPfeComponent implements OnInit {
     this.annes;
     this.niveuxSet=new Set<string>();
 
-    this.fileService.getListPfeByIdProf('hichame@gmail.com').subscribe((resp)=>{
+    this.fileService.getListPfeByIdProf( this.localStorage.retrieve('email')).subscribe((resp)=>{
           this.annes=new Array<number>();
           this.listpfe=resp;
           this.listpfeFilter=resp;

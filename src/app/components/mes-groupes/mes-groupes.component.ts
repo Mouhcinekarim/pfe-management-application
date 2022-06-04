@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { LocalStorageService } from 'ngx-webstorage';
 @Component({
   selector: 'app-mes-groupes',
   templateUrl: './mes-groupes.component.html',
@@ -7,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MesGroupesComponent implements OnInit {
   role:string='Professeur'
-  username:string='hichame@gmail.com'
-  constructor() { }
+  username:string
+  constructor(private localStorage:LocalStorageService) { }
 
   ngOnInit(): void {
+    this.username=this.localStorage.retrieve('email');
   }
 
 }

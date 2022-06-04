@@ -20,14 +20,33 @@ export class NavNewComponent implements OnInit {
   //
   isLoggedIn: boolean;
   email: string;
+  type:string;
   constructor(private loginService:LoginService,
     private router: Router,private toastr:ToastrService) { }
 
   ngOnInit(): void {
-    this.loginService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
-    this.loginService.email.subscribe((data: string) => this.email = data);
+    this.loginService.loggedIn.subscribe((data: boolean) =>{ this.isLoggedIn = data
+      if(this.isLoggedIn){
+        if(this.email.split('@')[1].split('.').length==2) this.type='Professeur'
+        else this.type='groupe'
+        
+        }
+    });
+    this.loginService.email.subscribe((data: string) =>{ this.email = data
+      if(this.isLoggedIn){
+        if(this.email.split('@')[1].split('.').length==2) this.type='Professeur'
+        else this.type='groupe'
+        
+        }
+    });
     this.isLoggedIn = this.loginService.isLoggedIn();
     this.email = this.loginService.getEmail();
+    if(this.isLoggedIn){
+    if(this.email.split('@')[1].split('.').length==2) this.type='Professeur'
+    else this.type='groupe'
+    
+    }
+    
   }
 
   // clickEvent(){
