@@ -40,7 +40,7 @@ export class ChefComponent implements OnInit {
     this.fileService.mellangeGroupPfe(this.email_prof,this.niveux).subscribe((rsp)=>{
       console.log(rsp)
       this.Listmellane=rsp;
-   if( this.Listmellane!=null)  this.createPdf(this.Listmellane)
+   if( this.Listmellane!=null && this.Listmellane.length!=0)  this.createPdf(this.Listmellane)
     });
   }
 
@@ -67,6 +67,9 @@ export class ChefComponent implements OnInit {
     (doc as any).autoTable({
       head: this.head,
       body: rows,
+      fontSize:15,
+      columnStyles: { 0: { halign: 'center', fillColor: [0, 255, 0] } },
+      font:'times',
       theme: 'striped',
       didDrawCell: data => {
         console.log(data.column.index)

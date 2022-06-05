@@ -118,10 +118,10 @@
                     </div>
                     <!-- ? enseignant -->
                     <div class="control-group">
-                        <div class="mb-0 form-floating controls pb-2"><select class="form-select color-bm" placeholder="Name" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
-                                <optgroup label="Rôle">
-                                    <option value="1">Enseignant</option>
-                                    <option value="2">Enseignant - Chef departement</option>
+                        <div class="mb-0 form-floating controls pb-2"><select formControlName="chef" [(ngModel)]="prof.chef" class="form-select color-bm" placeholder="Name" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
+                                <optgroup label="Rôle" > 
+                                    <option value="false">Enseignant</option>
+                                    <option value="true">Enseignant - Chef departement</option>
                                 </optgroup>
                             </select><label class="form-label" style="width: 81.5625px;font-family: Actor, sans-serif;">Rôle</label><small class="form-text text-danger help-block"></small></div>
                     </div>

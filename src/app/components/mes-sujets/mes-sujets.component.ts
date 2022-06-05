@@ -48,7 +48,11 @@ export class MesSujetsComponent implements OnInit {
       niveux : new FormControl('',
                                 [
                                   
-                                ])
+                                ]),
+      stage : new FormControl('',
+                                [
+                                  
+                                ])                                
 
     });
 
@@ -118,17 +122,24 @@ Upload(){
   this.pfe.titre=this.titre.value;
   this.pfe.niveau=this.niveux.value
   this.pfe.description=this.description.value;
+  if(this.pfe.rapport1==null) {
+    
+    this.pfe.anne=this.currentTime.getFullYear();
+  this.pfe.stage=false;
+  }
+  else { this.pfe.anne=this.anne.value;
+          alert(this.pfe.anne)  
+  }
   
-  this.pfe.anne=this.anne.value
-  console.log(this.pfe)
-  var formdata = new FormData();
+
  
-//  JSON.stringify(this.pfe)
+ 
+  JSON.stringify(this.pfe)
  
   
   
-  console.log(JSON.stringify(this.pfe))
-  this.pfe.anne=this.currentTime.getFullYear();
+ 
+
   this.fileService.upload(JSON.stringify(this.pfe)).subscribe(
     resp => {
       console.log(resp.status)

@@ -4,4 +4,5 @@ export class Prof{
       email:string;
       password:string;
       departementId:Number;
+      chef:boolean;
 }

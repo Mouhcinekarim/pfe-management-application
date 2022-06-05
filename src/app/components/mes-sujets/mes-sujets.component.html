@@ -172,12 +172,7 @@
                           </label><small class="form-text text-danger help-block"></small></div>
                   </div>
                   <!-- ? année -->
-                  <div class="control-group" style="margin-top: 5px;">
-                      <div class="mb-0 form-floating controls pb-2">
-                          <input  [value]="currentTime.getFullYear()" formControlName="anne" class="form-control color-bm" type="hidden" id="email-1" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
-                          année
-                      </label><small class="form-text text-danger help-block"></small></div>
-                  </div>
+                 
                   <!-- ? anne validation -->
                   <!-- ? description -->
                   <div class="control-group" style="margin-top: 5px;">
@@ -238,6 +233,7 @@
                           année
                       </label><small class="form-text text-danger help-block"></small></div>
                   </div>
+               
                   <!-- ? description -->
                   <div class="control-group" style="margin-top: 5px;">
                       <div class="mb-0 form-floating controls pb-2">
@@ -255,7 +251,20 @@
                   </label>
                   <!-- ? rapport -->
                   <input    (change)="chargerapport($event)"   formControlName="rapport" class="form-control form-control-lg" type="file" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);">
-              </form>
+              
+                 <!-- IsStage -->
+                 
+                 <div class="control-group" style="margin-top: 5px;height: 40px;">
+                    <div class="mb-0  controls pb-2 form-check  d-flex justify-content-center" >
+                        
+                        <input class="form-check-input"  [(ngModel)]="pfe.stage" formControlName="stage" type="checkbox" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault" style="margin-left:4px ;">
+                                 stage
+                           </label>
+                    <small class="form-text text-danger help-block"></small>
+                </div>
+                </div>
+                </form>
           </div>
           <!-- ? footer modal -->
           <div class="modal-footer" style="background: #f1f5f8;">

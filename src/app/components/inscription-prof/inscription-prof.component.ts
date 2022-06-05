@@ -40,7 +40,8 @@ export class InscriptionProfComponent implements OnInit {
                                 Validators.required,
                                 Validators.minLength(8)
                               ]),
-    departement :  new FormControl('')                         
+    departement :  new FormControl(''),
+    chef :  new FormControl('')
 
   })
 
