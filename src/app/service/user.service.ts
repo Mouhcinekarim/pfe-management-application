@@ -21,7 +21,7 @@ export class UserService {
     }
 
     findUsers(role,username) {
-        console.log("hero")
+       
         return this.http.get(this.baseUrl + `/${role}/listUsers?username=${username}`, { headers: headers });
     }
 }

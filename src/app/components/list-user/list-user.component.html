@@ -1,30 +1,15 @@
 
 <div  *ngIf="role=='Professeur'">
-    <!-- <div class="row overflow-auto" style="max-height: 500px;">
-        <li *ngFor="let niveux of niveuxSet">
-            <a >{{niveux}}</a>
-     <ul class=" list-unstyled" id="homeSubmenu">
-        <li *ngFor="let groupe of getListPfeByniveu(niveux)">	
-
-        <div  class="col-lg-12 d-lg-flex flex-column justify-content-lg-center align-items-lg-center">
-            <h4   (click)="group=groupe" (click)="startChatWithUser(group)"  class="text-center">nom pfe {{groupe.titre}}</h4><button  [disabled]="channel==null"  (click)="conferme_pfe(groupe.PfeInfoId,channel)"  class="btn btn-primary shadow-none" type="button" style="border-width: 0px;margin-bottom: 8px;"><i class="fas fa-check-circle"></i>&nbsp;valider PFE</button>
-        </div>
-    </li>
-
-    </ul>	
-    </li>
-      
-    </div> -->
-    <div class="row">
-        <div class="col" style="overflow-x: none;overflow-y: auto;max-height: 32.5rem;height: auto;padding-top: 55px;">
+   <div class="row">
+        <div class="col" style="overflow-x: none;overflow-y: auto;max-height: 32.5rem;height: auto;">
             <ul class="list-unstyled"  *ngFor="let niveux of niveuxSet">
-                <h3 style="color:black;">{{niveux}}</h3>
-                <li style="cursor: pointer;margin-top: 14px;"  *ngFor="let groupe of getListPfeByniveu(niveux)">
+              
+                <li style="cursor: pointer;"  *ngFor="let groupe of getListPfeByniveu(niveux)">
                 
-                    <div class="card border-0" style="border-radius: 25px;background-color:rgb(37, 6, 67) ;">
-                        <div  (click)="group=groupe" (click)="startChatWithUser(group)" class="card-body" style="box-shadow: 0px 0px 11px rgb(197,197,207);">
-                            <h4 class="text-break card-title" style="border-color: var(--bs-blue);color: white;">{{groupe.titre}}</h4>
-                            <div class="d-lg-flex justify-content-lg-center"><button [disabled]="channel==null"  (click)="conferme_pfe(groupe.pfeInfoId,channel)"  class="btn btn-primary text-center d-lg-flex justify-content-center align-items-lg-center" type="button" style="width: 99.5521px;"><i class="fa fa-check-square-o d-lg-flex justify-content-start justify-content-lg-start align-items-lg-center" style="margin-left: 0px;"></i>Confermer</button></div>
+                    <div class=" border-0" >
+                        <div  (click)="group=groupe" (click)="startChatWithUser(group)" class="card-body" style="border-bottom: 1px solid;">
+                            <h4 class="text-break card-title" style="border-color: var(--bs-blue);color: rgb(0, 0, 0);font-size: 17px;font-family: monospace;">{{groupe.titre}}</h4>
+                            <div class="d-lg-flex justify-content-lg-center"><button [disabled]="channel==null"  (click)="conferme_pfe(groupe.pfeInfoId,channel)"   class="btn text-center d-lg-flex justify-content-center align-items-lg-center" type="button" style="width: 99.5521px;background-color:#ffb6c1;color:white"><i class="fa fa-check-square-o d-lg-flex justify-content-start justify-content-lg-start align-items-lg-center" style="margin-left: 0px;"></i>Confirmer</button></div>
                         </div>
                     </div>
                 </li>
@@ -35,16 +20,16 @@
     </div>
 </div>
 <div  *ngIf="role=='groupe'">
-    <div class="row" >
-        <div class="col-lg-12"  *ngFor="let user of users " style="margin-top: 50px;" >
+    <div class="row" style="overflow-x: none;overflow-y: auto;max-height: 32.5rem;height: auto;">
+        <div class="col-lg-12"  *ngFor="let user of users " style="margin-top: 50px;"  >
             <h4 class="text-center" style="color: black;">Titre du projet: {{user.titre}}</h4>
-            <p style="color:white;"><strong>Encadrant : {{user.nom_prof}} {{user.prenom_prof}}</strong></p>
-            <p style="color:white;"><strong>Niveau : </strong>{{user.niveau}}</p>
+            <p style="color:rgb(0, 0, 0);margin-left: 20px;"><strong>Encadrant : {{user.nom_prof}} {{user.prenom_prof}}</strong></p>
+            <p style="color:rgb(0, 0, 0);margin-left: 20px;"><strong>Niveau : </strong>{{user.niveau}}</p>
             <div class="text-break" style="width: auto; height:auto;">
-                <strong style="color: rgba(0, 0, 0, 0.678);">Description : </strong>
-                <p style="color:white;font-size: 16px;font-family: Arial, Helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.description}}</p> 
+                <strong style="color: rgba(0, 0, 0, 0.678);margin-left: 40px;">Description : </strong>
+                <p style="font-size: 16px;font-family: Arial, Helvetica, sans-serif;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.description}}</p> 
                 <div  class="d-flex justify-content-end">
-                     <a style="color:rgb(255, 255, 255);border-bottom: 1px solid white;" role="button" data-toggle="modal" (click)="desableinput(user)" data-target="#exampleModal">modifier</a>
+                     <a style="color:rgb(0, 0, 0);border-bottom: 1px solid rgb(0, 0, 0);" role="button" data-toggle="modal" (click)="desableinput(user)" data-target="#exampleModal">modifier</a>
                 </div>
     
             </div>

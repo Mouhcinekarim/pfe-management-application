@@ -27,25 +27,15 @@ export class MessagesComponent implements OnInit {
     this.channelService.getChannel().subscribe(channel => {
       this.channel = channel;
      
-      this.messageService.Histoiremessage( this.channel).subscribe(resp=>{
-        console.log("respo")
-        console.log(resp)
-        for(let i=0;i<resp.length;i++){
-          
-          this.messageService.pushMessage(resp[i])
-           
-        }
-       
-       console.log("fin")
-      })
+   
       
         this.filterMessages();
       
-      console.log("init message "+this.channel)
+     
     });
    
     this.messageService.getMessages().subscribe(messages => {
-     console.log("MESSAGES")
+   
       this.filterMessages();
      
     });
@@ -56,7 +46,7 @@ export class MessagesComponent implements OnInit {
   filterMessages() {
 
     this.filteredMessages = this.messageService.filterMessages(this.channel);
-  console.log(this.filteredMessages)
+ 
     window.scrollTo(0, document.body.scrollHeight);
     this.scrollToBottom()
   }
@@ -71,14 +61,7 @@ export class MessagesComponent implements OnInit {
   sendMessage() {
     
     if (this.newMessage) {
-      alert()
-     console.log(JSON.stringify({
-        'channel': this.channel,
-        'sender': this.username,
-        'content': this.newMessage,
-        'fichier':this.newFichier,
-        'type':this.newTyp,
-      }))
+    
       this.stompService.publish({
         
         destination: '/app/messages', body:
@@ -114,7 +97,7 @@ blobToBase64  = blob => {
 };
 
 public base64ToBlob(b64Data, contentType='', sliceSize=512) {
-   console.log(b64Data)
+  
    
   b64Data = b64Data.replace(/\s/g, ''); //IE compatibility...
   let byteCharacters = atob(b64Data);
@@ -135,8 +118,6 @@ public base64ToBlob(b64Data, contentType='', sliceSize=512) {
 Doawload(base64:any,titre:string,type:string){
   const blob=this.base64ToBlob(base64);
  
-  // console.log("daw");
-  // console.log(base64)
 
   const a = document.createElement('a')
       const objectUrl = URL.createObjectURL(blob)

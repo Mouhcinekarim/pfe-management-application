@@ -17,28 +17,31 @@ export class ChefComponent implements OnInit {
   niveux:string;
   email_prof:string;
   Listmellane:PfeGroupProf[];
+  Ischef:boolean;
   head = [['Encadrant', 'Sujet PFE', 'Etudiants']]
   constructor(private fileService:ServicePfeService, private localStorage:LocalStorageService) { }
 
   ngOnInit(): void {
     this.email_prof=this.localStorage.retrieve('email');
+    this.fileService.getIschef(this.email_prof).subscribe((rs)=>this.Ischef=rs)
     
   }
 
   cherche(){
+   
     this.fileService.getProfTitre(this.email_prof,this.niveux).subscribe((profs)=>{
       this.listprof=profs;
-      console.log( this.listprof)
+     
     })
     this.fileService.getEtudiantGroup(this.email_prof,this.niveux).subscribe((groups)=>{
       this.listGroup=groups;
-      console.log(this.listGroup)
+      
     })
   }
 
   mellange(){
     this.fileService.mellangeGroupPfe(this.email_prof,this.niveux).subscribe((rsp)=>{
-      console.log(rsp)
+     
       this.Listmellane=rsp;
    if( this.Listmellane!=null && this.Listmellane.length!=0)  this.createPdf(this.Listmellane)
     });
@@ -46,19 +49,20 @@ export class ChefComponent implements OnInit {
 
   // Download list des group et prof
   createPdf(data:PfeGroupProf[]) {
+ 
    const rows=[];
    data.forEach(element => {
     // tslint:disable-next-line:max-line-length
-    let etudinat:string=''
-    element.etudiant.forEach((etd)=> etudinat+=`${etd.nom} ${etd.prenom}   `)
-    const temp = [`${element.nom} ${element.prenom} 
-    ${element.email}`, element.titre,etudinat];
+     var etudinat:string=''
+    element.etudiant.forEach((etd)=> etudinat+=""+etd.nom+"  "+etd.prenom+"  \n")
+    alert(etudinat)
+    const temp = [element.nom+" "+element.prenom +"\n"+ element.email+"", element.titre,etudinat];
     rows.push(temp);
   
   });
     var doc = new jsPDF();
 
-    doc.setFontSize(18);
+   
     doc.text(`List de PFE de : ${this.niveux}`, 11, 8);
     doc.setFontSize(16);
     doc.setTextColor(100);
@@ -67,12 +71,12 @@ export class ChefComponent implements OnInit {
     (doc as any).autoTable({
       head: this.head,
       body: rows,
-      fontSize:15,
-      columnStyles: { 0: { halign: 'center', fillColor: [0, 255, 0] } },
+     
+      
       font:'times',
       theme: 'striped',
       didDrawCell: data => {
-        console.log(data.column.index)
+      
       }
     })
 

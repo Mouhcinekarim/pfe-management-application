@@ -32,23 +32,27 @@
 	</div>
 </body>
 </html>			 -->
-<body>
+<body >
     
 
-<div class="container-fluid">
+    <div class="green-background"></div>
+    <div class="gris-background"></div>
+<div class=" w-75"  style="z-index: 1;margin: auto;position: absolute;right:12.5% ;top:13%;background-color: white;" >
     <div class="row" >
-        <div class="col-lg-4 col-xl-4" style="min-height:500px ;max-height: 560px;height: auto;overflow-x: none;overflow-y: auto;background: rgb(190,38,221);
-       background: linear-gradient(139deg, #c786fb 0%, rgb(203,96,241) 28%, rgb(183,89,198) 65%, #bc2bae 100%), var(--bs-purple);">
+        <div class="col-lg-4 col-xl-4" style="min-height:500px ;max-height: 560px;height: auto;overflow-x: none;overflow-y: auto;">
             <app-list-user [username]="id_user" [role]="role"  class="user-container">
             </app-list-user>
         </div>
-        <div class="col-sm-8 d-lg-block d-xl-block" style="min-height:500px ;max-height: 560px;height: auto;background: linear-gradient(160deg, rgba(231,200,237,0.39), rgba(251,237,209,0.68) 49%, rgba(251,237,209,0.68) 86%); ">
+        <div class="col-sm-8 d-lg-block d-xl-block" 
+        style="min-height:500px ;max-height: 560px;height: auto;background:
+         rgb(255, 255, 255) ;box-shadow: inset 2px 2px   rgb(198, 198, 195)">
           
-            <app-messages [username]="id_user" [role]="role" class="message-wrapper">
+            <app-messages [username]="id_user" [role]="role"  class="message-wrapper">
             </app-messages>	
         </div>
     </div>
 </div>
+
 
 </body>
 <script src="assets/bootstrap/js/bootstrap.min.js"></script>

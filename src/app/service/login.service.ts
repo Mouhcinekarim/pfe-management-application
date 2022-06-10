@@ -102,6 +102,9 @@ export class LoginService {
     this.localStorage.clear('email');
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
+    this.loggedIn.emit(false);
+    this.email.emit(null);
+    
   }
 
   getEmail() {

@@ -32,10 +32,10 @@ export class ListUserComponent implements OnInit {
   ngOnInit(): void {
     this.userService.findUsers(this.role,this.username).subscribe(
       (res: User[]) => {
-       console.log(res)
+     
           this.users = res;
           this.groupe=res;
-          console.log(this.groupe)
+        
 
           this.groupe.forEach((pfe)=>{
             this.niveuxSet.add(pfe.niveau)
@@ -64,7 +64,7 @@ export class ListUserComponent implements OnInit {
    
      
     const channelId = ChannelService.createChannel(this.username, user.username);
-    console.log("star list "+this.channel)
+   
 
     if(channelId!=this.channel){
     this.channelService.refreshChannel(channelId);
@@ -73,7 +73,7 @@ export class ListUserComponent implements OnInit {
     // this.receiverUpdated.emit(user.username);
   
     this.messageService.sendReadReceipt(channelId, user.username);
-    console.log("after send read")
+ 
     }
 }
 
@@ -110,7 +110,7 @@ initUserEvents() {
 subscribeToOtherUsers(users, username) {
   const filteredUsers: Array<any> = users.filter(user => username !== user.username);
   filteredUsers.forEach(user => {
-    console.log("users "+user)
+  
     this.subscribeToOtherUser(user)});
 }
 
@@ -120,8 +120,8 @@ subscribeToOtherUser(otherUser): string {
   this.stompService.watch(`/channel/chat/${channelId}`).subscribe(res => {
    
       const data: Message = JSON.parse(res.body);
-      console.log( "dii")
-    console.log(data)
+     
+   
       this.messageService.pushMessage(data);
       this.messageService.filterMessages(channelId)
       if (data.channel !== this.channel) {

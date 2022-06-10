@@ -5,7 +5,7 @@ import { LoginService } from 'src/app/service/login.service';
 import 'src/assets/js/script.min.js';
 import { ToastrService } from 'ngx-toastr';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { ServicePfeService } from 'src/app/service/service-pfe.service';
 @Component({
   selector: 'app-nav-new',
   templateUrl: './nav-new.component.html',
@@ -21,15 +21,20 @@ export class NavNewComponent implements OnInit {
   isLoggedIn: boolean;
   email: string;
   type:string;
+  Ischef:boolean;
   constructor(private loginService:LoginService,
-    private router: Router,private toastr:ToastrService) { }
+    private router: Router,private toastr:ToastrService,private fileService:ServicePfeService) { }
 
   ngOnInit(): void {
     this.loginService.loggedIn.subscribe((data: boolean) =>{ this.isLoggedIn = data
+      
       if(this.isLoggedIn){
+        this.email = this.loginService.getEmail();
         if(this.email.split('@')[1].split('.').length==2) this.type='Professeur'
         else this.type='groupe'
-        
+        this.fileService.getIschef(this.email).subscribe((rs)=>{this.Ischef=rs
+          
+        })
         }
     });
     this.loginService.email.subscribe((data: string) =>{ this.email = data
@@ -40,7 +45,11 @@ export class NavNewComponent implements OnInit {
         }
     });
     this.isLoggedIn = this.loginService.isLoggedIn();
-    this.email = this.loginService.getEmail();
+    if( this.isLoggedIn){ this.email = this.loginService.getEmail();
+      this.fileService.getIschef(this.email).subscribe((rs)=>{this.Ischef=rs
+    
+      })}
+   
     if(this.isLoggedIn){
     if(this.email.split('@')[1].split('.').length==2) this.type='Professeur'
     else this.type='groupe'

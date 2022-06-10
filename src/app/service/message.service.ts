@@ -33,7 +33,7 @@ export class MessageService {
     }
      
     Histoiremessage(channel: string){
-
+        this.msgs.next(null);
        return this.http.get<Message[]>(this.service + '/messages/'+channel);
     }
 

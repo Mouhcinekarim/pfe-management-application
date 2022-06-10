@@ -18,13 +18,18 @@ export class HomeComponent implements OnInit {
   type:string;
   image:Blob
   imageURL:SafeUrl
+  anneSelect:String;
   constructor(private fileService:ServicePfeService,private loginService:LoginService,private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
+    this.anneSelect="L'anne";
     this.niveauSet= new Set<string>();
     for(let i=2010;i<=2024;i++) this.annes.push(i)
     this.filter= new Filter();
-    this.loginService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
+    this.filter.anne="L'anne";
+    this.loginService.loggedIn.subscribe((data: boolean) => {
+     
+      this.isLoggedIn = data});
     this.loginService.email.subscribe((data: string) => this.email = data);
     this.isLoggedIn = this.loginService.isLoggedIn();
     this.email = this.loginService.getEmail();
@@ -33,18 +38,7 @@ export class HomeComponent implements OnInit {
   }
 
    remlistrecomm(){
-   if( this.isLoggedIn){
-     if(this.email.split('@')[1].split('.').length==2) this.type='Professeur'
-     else this.type='groupe'
-
-     this.fileService.getNomDepartement(this.type,this.email).subscribe((nom)=>{
-      console.log("nom")
-       this.listRecomment=this.ListPFE.filter((pfe)=>pfe.nom_departement==nom.body)
-     },err=>{
-       console.log(err.error['text'])
-       this.listRecomment=this.ListPFE.filter((pfe)=>pfe.nom_departement==err.error['text'])
-     })
-   }
+  
    }
   clickEvent(){
         this.status = !this.status;
@@ -75,9 +69,7 @@ export class HomeComponent implements OnInit {
 
       })
 
-      console.log(this.niveauSet);
-      console.log(this.encadrentSet);
-      console.log(this.NomDepartementSet);
+     
       }
 
 
@@ -91,10 +83,10 @@ export class HomeComponent implements OnInit {
       this.cherche(event);
     }
     cherche(event){
-
-    console.log(this.filter)
-    if(!(typeof this.ListPFE==='undefined'))  this.filterlist =this.ListPFE.filter(pfe=>this.isExist(pfe,this.filter))
-
+    if(this.filter.anne=="L'anne") this.filter.anne=''
+ 
+    if(!(typeof this.ListPFE==='undefined'))  this.filterlist =this.ListPFE.filter(pfe=>this.isExist(pfe,this.filter) )
+    if(this.filter.anne=="") this.filter.anne="L'anne"
     }
     isStage(event){
       if(event.target.checked) this.filter.stage='true'
@@ -103,7 +95,7 @@ export class HomeComponent implements OnInit {
     }
     isExist(pfe,filter){
     let find=true
-    console.log("entrer a is Exist")
+    
     Object.keys(filter).forEach((key)=>{
       if(! (typeof pfe[key]=== 'undefined')){
       var  textSearch='';
@@ -123,21 +115,22 @@ export class HomeComponent implements OnInit {
     getList(){
 
 
-
+if(this.isLoggedIn){
 
       this.fileService.getAll().subscribe(
         PFES=>{
-          console.log(PFES)
+         
           this.ListPFE=PFES;
           this.RemplirChearch();
           this.remlistrecomm()
       })
     }
+    }
 
     //doawload
     Doawload(base64:any,titre:string,type:string){
       const blob=this.base64ToBlob(base64);
-      console.log(blob)
+     
       // console.log("daw");
       // console.log(base64)
 

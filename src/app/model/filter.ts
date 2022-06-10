@@ -4,7 +4,7 @@ export class Filter{
     encadrant:string;
     nom_departement:string;
     stage:string;
-    anne:number;
+    anne:string;
     nom:string;
     prenom:string;
     separer(){

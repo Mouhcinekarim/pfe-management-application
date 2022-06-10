@@ -1,0 +1,17 @@
+.green-background {
+    background: #bdcbee;
+    height: 200px;
+    width: 100%;
+    position: fixed;
+    top: 40px;
+    z-index: -1;
+}
+
+.gris-background{
+    background: #e1e4e6;
+    height: 490px;
+    width: 100%;
+    position: fixed;
+    top: 240px;
+    z-index: -3;
+}

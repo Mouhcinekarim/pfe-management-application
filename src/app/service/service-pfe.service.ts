@@ -27,11 +27,11 @@ export class ServicePfeService {
       }
 
       AddProf(prof:Prof){
-        console.log(prof)
+     
         let headers = new HttpHeaders();
         headers.append('content-type', 'application/json');
       headers.append('accept', 'application/json');
-        console.log("entrer")
+      
         return this.http.post<Prof>(`${this.server}/Professeur`,prof,{headers: headers});
       }
 
@@ -40,7 +40,7 @@ export class ServicePfeService {
       }
 
       update(formData,idpfe){
-        console.log(formData)
+     
         return this.http.put<string>(`${this.server}/PFE/update?idpfe=${idpfe}`, formData,{
           observe:'response'
         });
@@ -50,7 +50,7 @@ export class ServicePfeService {
         let headers = new HttpHeaders();
         headers.append('content-type', 'application/json');
         headers.append('accept', 'application/json');
-        console.log("entrer")
+     
         return this.http.post(`${this.server}/groupe`,groupe,{headers: headers});
 
 
@@ -79,7 +79,7 @@ export class ServicePfeService {
     }
         
         UpdateDescription(idpfe,description){
-console.log(idpfe,description)
+
   return this.http.put(`${this.server}/PFE/updatedescription?idpfe=${idpfe}`, description,{
           observe:'response'
         });
@@ -97,6 +97,10 @@ console.log(idpfe,description)
 
         deletePfe(idpfe){
          return this.http.delete(`${this.server}/PFE/deletepfe?idpfe=${idpfe}`)
+        }
+        
+        getIschef(email){
+          return this.http.get<boolean> (`${this.server}/Professeur/isChef?email=${email}`)
         }
 
 }

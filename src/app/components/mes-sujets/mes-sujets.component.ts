@@ -128,7 +128,7 @@ Upload(){
   this.pfe.stage=false;
   }
   else { this.pfe.anne=this.anne.value;
-          alert(this.pfe.anne)  
+        
   }
   
 

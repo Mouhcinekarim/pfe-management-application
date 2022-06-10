@@ -33,7 +33,7 @@ export class InscriptionGroupeComponent implements OnInit {
     email : new FormControl('',
                            [
                               Validators.required,
-                              Validators.pattern('[a-zA-Z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}')
+                              Validators.pattern('[a-zA-Z0-9._-]+@[a-z0-9._-]{2,6}\.[a-z0-9._-]{2,}\.[a-z]{1,4}$')
                             ]),
     password : new FormControl('',
                               [
@@ -65,8 +65,8 @@ export class InscriptionGroupeComponent implements OnInit {
                               Validators.maxLength(8),
                               Validators.pattern('[0-9]*')
                             ]),
-     niveux:new    FormControl() ,
-     departement:new  FormControl()         
+     niveux:new    FormControl('',[ Validators.required]) ,
+     departement:new  FormControl('',[ Validators.required])         
 
     })
 
