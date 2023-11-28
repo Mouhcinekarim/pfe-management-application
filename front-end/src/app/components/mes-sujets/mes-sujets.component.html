@@ -1,0 +1,376 @@
+ <!-- NOTE : même div du resultat  -->
+ <!-- + -->
+ <!--
+   licence/master
+   titre pfe
+   btn : confirmer pfe
+  -->
+ 
+
+ <div  class="d-md-flex justify-content-md-end d-sm-flex justify-content-sm-end d-flex justify-content-end" style="position:absolute;right:25px;top:65px;z-index:2;">
+    <div  class="dropdown" style="margin-top: 13px;"><button class="btn btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button" style="box-shadow: 0px 0px ;border-width: 1px;border-color: var(--bs-purple);border-radius: 27px;border-top-left-radius: 14px;"><i class="fas fa-plus-circle fs-2" style="color: var(--bs-purple);"></i></button>
+      <div class="dropdown-menu dropdown-menu-dark"><a class="dropdown-item" href="#" data-bs-target="#nouveau" data-bs-toggle="modal">nouveau projet</a>
+          <hr style="margin-top: 0px;margin-bottom: 0px;"><a class="dropdown-item" href="#" data-bs-target="#ancien" data-bs-toggle="modal">ancien projet</a>
+          <hr style="margin-top: 0px;margin-bottom: 0px;"><a class="dropdown-item" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">List</a>
+      </div>
+    </div>
+  </div> 
+ 
+
+  <div class="offcanvas offcanvas-end" role="dialog"  data-bs-scroll="true" data-bs-backdrop="false"  tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">List de PFE No Confirmer</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="table-responsive">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th class="text-center" style="width: auto;max-width: 214px;font-family: sans-serif;">Titre de Pfe</th>
+                  <th class="text-center" style="width: 50.438px;">Update</th>
+                  <th style="width: 50.948px;text-align: center;">Delete</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let pfe of listpfeNoConf;let i=index">
+                  <td class="text-center" style="width: auto;max-width: 214px;">{{pfe.titre}}</td>
+                  <td style="text-align: center;"><a class="btn btn-success"   [href]="'#update'+i" data-bs-toggle="modal" type="button"><svg class="bi bi-pencil-square" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16">
+                              <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"></path>
+                              <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"></path>
+                          </svg></a></td>
+                  <td style="text-align: center;"><a *ngIf="pfe.group"  class="btn btn-danger" type="button"  data-bs-toggle="modal" [href]="'#confirmer'+i"><i class="bi bi-trash"></i></a></td>
+              
+              <!-- modal de update -->
+              
+              <div class="modal fade" data-bs-backdrop="false" role="dialog" tabindex="-1" [id]="'update'+i">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <!-- ? header modal -->
+                        <div class="modal-header d-md-flex justify-content-lg-center" style="background: #f1f5f8;">
+                            <div class="d-md-flex justify-content-md-center">
+                                <h4 class="modal-title text-center d-lg-flex justify-content-lg-center" style="color: var(--bs-gray-900);">Vous remplissez un nouveau PFE</h4>
+                            </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <!-- ? body modal -->
+                        <div class="modal-body" style="background: #f1f5f8;">
+                            <!--// TODO : enctype in form -->
+                            <form enctype="multipart/form-data">
+                                <!-- ? titre -->
+                                <div class="control-group" style="margin-top: 5px;">
+                                    <div class="mb-0 form-floating controls pb-2">
+                                        <input [name]="'titre'+i" [(ngModel)]="pfe.titre" class="form-control color-bm" type="text" id="email" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                                        titre du projet
+                                    </label><small class="form-text text-danger help-block"></small></div>
+                                </div>
+                                <!-- ? titre validation -->
+                                
+                                <!--  -->
+                                <!-- ? niveau -->
+                                <div class="control-group" style="margin-top: 5px;">
+                                    <div class="mb-0 form-floating controls pb-2"><select [(ngModel)]="pfe.niveau" [name]="'niveux'+i"  class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                                        <option >Licence Informatique </option>
+                                        <option >Licence Génie Mathématique et Applications</option>
+                                        <option>Master Informatique Décisionnelle</option>
+                                        <option>Licence Génie Mathématique</option>
+                                        <option>Licence TACQ</option>
+                                        </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                                            Niveau
+                                        </label><small class="form-text text-danger help-block"></small></div>
+                                </div>
+                                <!-- ? année -->
+                                <div class="control-group" style="margin-top: 5px;">
+                                    <div class="mb-0 form-floating controls pb-2">
+                                        <input [(ngModel)]="pfe.anne"   [name]="'anne'+i" class="form-control color-bm" type="number" id="email-1" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                                        année
+                                    </label><small class="form-text text-danger help-block"></small></div>
+                                </div>
+                                <!-- ? anne validation -->
+                                <!-- ? description -->
+                                <div class="control-group" style="margin-top: 5px;">
+                                    <div class="mb-0 form-floating controls pb-2">
+                                        <textarea [(ngModel)]="pfe.description"  [name]="'description'+i" style="height: 100px;" class="form-control"  rows="6"></textarea><label class="form-label" style="box-shadow: 0px 0px;width: 243.5625px;font-family: Actor, sans-serif;">
+                                        Description et objectif du projet
+                                    </label><small class="form-text text-danger help-block"></small></div>
+                                </div>
+                                <!-- ? description validation -->
+              
+                            </form>
+                        </div>
+                        <!-- ? dismiss modal -->
+                        <div class="modal-footer" style="background: #f1f5f8;"><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="color: var(--bs-gray-900);background: var(--bs-gray-300);">
+                            fermer
+                        </button>
+                        <!-- ? enregistrer -->
+                        <button   (click)="update(pfe)"  class="btn btn-primary" type="submit"  data-bs-dismiss="modal" aria-label="Close">
+                            enregistrer
+                        </button></div>
+                    </div>
+                </div>
+            </div>
+              
+              <!-- modal confirmer pfe -->
+              
+  <div class="modal fade" [id]="'confirmer'+i" style="height:auto ;" data-bs-backdrop="false" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Confirmation</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+         vous voulez supprimer cette PFE
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" aria-label="Close" data-bs-dismiss="modal">Non</button>
+          <button type="button" class="btn btn-primary" aria-label="Close" data-bs-dismiss="modal" (click)="deletepfe(pfe.pfeInfoId)">Oui</button>
+        </div>
+      </div>
+    </div>
+  </div>
+              
+              
+                </tr>
+          </tbody>
+      </table>
+  </div>
+    </div>
+
+
+<app-list-pfe></app-list-pfe>
+<!-- ? modal nouveau pfe -->
+<div class="modal fade" role="dialog" tabindex="-1" id="nouveau">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <!-- ? header modal -->
+          <div class="modal-header d-md-flex justify-content-lg-center" style="background: #f1f5f8;">
+              <div class="d-md-flex justify-content-md-center">
+                  <h4 class="modal-title text-center d-lg-flex justify-content-lg-center" style="color: var(--bs-gray-900);">Vous remplissez un nouveau PFE</h4>
+              </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- ? body modal -->
+          <div class="modal-body" style="background: #f1f5f8;">
+              <!--// TODO : enctype in form -->
+              <form enctype="multipart/form-data" #valid="ngForm" [formGroup]="pfeValidation">
+                  <!-- ? titre -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input  formControlName="titre" class="form-control color-bm" type="text" id="email" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          titre du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? titre validation -->
+                  <div *ngIf="">
+
+                  </div>
+                  <!--  -->
+                  <!-- ? niveau -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2"><select  formControlName="niveux"  class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                        <option >Licence Informatique </option>
+                        <option >Licence Génie Mathématique et Applications</option>
+                        <option>Master Informatique Décisionnelle</option>
+                        <option>Licence Génie Mathématique</option>
+                        <option>Licence TACQ</option>
+                        <option>Master : Génie Mathématiques & Applications</option>
+                          </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                              Niveau
+                          </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? année -->
+                 
+                  <!-- ? anne validation -->
+                  <!-- ? description -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <textarea  formControlName="description" class="form-control"  rows="6"></textarea><label class="form-label" style="box-shadow: 0px 0px;width: 243.5625px;font-family: Actor, sans-serif;">
+                          Description et objectif du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? description validation -->
+
+              </form>
+          </div>
+          <!-- ? dismiss modal -->
+          <div class="modal-footer" style="background: #f1f5f8;"><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="color: var(--bs-gray-900);background: var(--bs-gray-300);">
+              fermer
+          </button>
+          <!-- ? enregistrer -->
+          <button   (click)="Upload()"  class="btn btn-primary" type="submit"  data-bs-dismiss="modal" aria-label="Close">
+              enregistrer
+          </button></div>
+      </div>
+  </div>
+</div>
+<!-- ? modal ancien pfe -->
+<div class="modal fade" role="dialog" tabindex="-1" id="ancien">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+      <div class="modal-content">
+          <!-- ? header modal -->
+          <div class="modal-header d-md-flex justify-content-lg-center" style="background: #f1f5f8;">
+              <div class="d-md-flex justify-content-md-center">
+                  <h4 class="modal-title text-center d-lg-flex justify-content-lg-center" style="color: var(--bs-gray-900);">Vous remplissez un ancien PFE</h4>
+              </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <!-- ? body modal -->
+          <div class="modal-body" style="background: #f1f5f8;">
+              <form enctype="multipart/form-data" #valid="ngForm" [formGroup]="pfeValidation">
+                  <!-- ? titre -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input   formControlName="titre" class="form-control color-bm" type="text" id="email-2" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          titre du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? niveau -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div  class="mb-0 form-floating controls pb-2"><select  formControlName="niveux" class="form-select"  style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                        <option >Licence Informatique</option>
+                        <option >Licence Génie Mathématique et Applications</option>
+                        <option>Master Informatique Décisionnelle</option>
+                        <option>Licence Génie Mathématique</option>
+                        <option>Licence TACQ</option>
+                        <option>Master : Génie Mathématiques & Applications</option>
+                          </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                              Niveau
+                          </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? année -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <input  formControlName="anne" class="form-control color-bm" type="text" id="email-3" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                          année
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+               
+                  <!-- ? description -->
+                  <div class="control-group" style="margin-top: 5px;">
+                      <div class="mb-0 form-floating controls pb-2">
+                          <textarea    formControlName="description" class="form-control" rows="6" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"></textarea><label class="form-label" style="width: 243.5625px;font-family: Actor, sans-serif;">
+                          Description et objectif du projet
+                      </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <label class="form-label" style="margin-bottom: 3px;">
+                      Page de garde : A4
+                  </label>
+                  <!-- ? page de garde -->
+                  <input  (change)="chargephoto($event)" formControlName="pageGard" class="form-control form-control-lg" type="file" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);margin-bottom: 9px;">
+                  <label class="form-label" style="margin-bottom: 4px;">
+                      rapport (.pdf)
+                  </label>
+                  <!-- ? rapport -->
+                  <input    (change)="chargerapport($event)"   formControlName="rapport" class="form-control form-control-lg" type="file" style="box-shadow: 0px 0px;border-width: 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);">
+              
+                 <!-- IsStage -->
+                 
+                 <div class="control-group" style="margin-top: 5px;height: 40px;">
+                    <div class="mb-0  controls pb-2 form-check  d-flex justify-content-center" >
+                        
+                        <input class="form-check-input"  [(ngModel)]="pfe.stage" formControlName="stage" type="checkbox" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault" style="margin-left:4px ;">
+                                 stage
+                           </label>
+                    <small class="form-text text-danger help-block"></small>
+                </div>
+                </div>
+                </form>
+          </div>
+          <!-- ? footer modal -->
+          <div class="modal-footer" style="background: #f1f5f8;">
+          <!-- ? dismiss modal -->
+              <button class="btn btn-light" type="button" data-bs-dismiss="modal" style="color: var(--bs-gray-900);background: var(--bs-gray-300);">
+              fermer
+          </button>
+          <!-- ? enregistrer -->
+          <button (click)="Upload()"  class="btn btn-primary " type="submit"  data-bs-dismiss="modal" aria-label="Close" >
+              enregistrer
+          </button></div>
+      </div>
+  </div>
+</div>
+
+<div class="modal fade" role="dialog" tabindex="-1" id="update">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- ? header modal -->
+            <div class="modal-header d-md-flex justify-content-lg-center" style="background: #f1f5f8;">
+                <div class="d-md-flex justify-content-md-center">
+                    <h4 class="modal-title text-center d-lg-flex justify-content-lg-center" style="color: var(--bs-gray-900);">Vous remplissez un nouveau PFE</h4>
+                </div><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <!-- ? body modal -->
+            <div class="modal-body" style="background: #f1f5f8;">
+                <!--// TODO : enctype in form -->
+                <form enctype="multipart/form-data" #valid="ngForm" [formGroup]="pfeValidation">
+                    <!-- ? titre -->
+                    <div class="control-group" style="margin-top: 5px;">
+                        <div class="mb-0 form-floating controls pb-2">
+                            <input  formControlName="titre" class="form-control color-bm" type="text" id="email" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                            titre du projet
+                        </label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <!-- ? titre validation -->
+                    <div *ngIf="">
+  
+                    </div>
+                    <!--  -->
+                    <!-- ? niveau -->
+                    <div class="control-group" style="margin-top: 5px;">
+                        <div class="mb-0 form-floating controls pb-2"><select  formControlName="niveux"  class="form-select" style="box-shadow: 0px 0px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);border-radius: 13px;">
+                            <option >Licence Informatique </option>
+                            <option >Licence Génie Mathématique et Applications</option>
+                            <option>Master Informatique Décisionnelle</option>
+                            <option>Licence Génie Mathématique</option>
+                            <option>Licence TACQ</option>
+                            <option>Master : Génie Mathématiques & Applications</option>
+                            </select><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                                Niveau
+                            </label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <!-- ? année -->
+                    <div class="control-group" style="margin-top: 5px;">
+                        <div class="mb-0 form-floating controls pb-2">
+                            <input  [value]="currentTime.getFullYear()" formControlName="anne" class="form-control color-bm" type="hidden" id="email-1" required="" placeholder="Email" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 13px;border-bottom-width: 2px;border-bottom-color: var(--bs-teal);"><label class="form-label" style="width: 130.5625px;font-family: Actor, sans-serif;">
+                            année
+                        </label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <!-- ? anne validation -->
+                    <!-- ? description -->
+                    <div class="control-group" style="margin-top: 5px;">
+                        <div class="mb-0 form-floating controls pb-2">
+                            <textarea  formControlName="description" class="form-control"  rows="6"></textarea><label class="form-label" style="box-shadow: 0px 0px;width: 243.5625px;font-family: Actor, sans-serif;">
+                            Description et objectif du projet
+                        </label><small class="form-text text-danger help-block"></small></div>
+                    </div>
+                    <!-- ? description validation -->
+  
+                </form>
+            </div>
+            <!-- ? dismiss modal -->
+            <div class="modal-footer" style="background: #f1f5f8;"><button class="btn btn-light" type="button" data-bs-dismiss="modal" style="color: var(--bs-gray-900);background: var(--bs-gray-300);">
+                fermer
+            </button>
+            <!-- ? enregistrer -->
+            <button   (click)="Upload()"  class="btn btn-primary" type="submit"  data-bs-dismiss="modal" aria-label="Close">
+                enregistrer
+            </button></div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="confirmer" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>

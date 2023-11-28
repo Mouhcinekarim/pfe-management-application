@@ -1,0 +1,167 @@
+<body style="color: rgb(33, 37, 41);">
+  <div class="container">
+      <div></div>
+  </div>
+  <div class="container-fluid" style="margin-top: 14px;margin-bottom: 27px;">
+      <div class="row align-self-start">
+          <div class="col d-none d-md-block" data-aos="fade-right" style="border-top-right-radius: 18px;border-bottom-right-radius: 18px;background: repeating-linear-gradient(118deg, rgba(87,0,252,0.6) 21%, rgba(0,91,191,0.43) 66%, rgba(248,247,254,0.71) 100%);">
+              <div></div>
+          </div>
+          <div class="col-md-6" data-aos="fade-left">
+              <form #valid="ngForm" [formGroup]="inscriptionValidationGroupe">
+                  <div class="justify-content-center align-items-center align-content-center">
+                      <h2 style="text-align: center;color: var(--bs-gray-900);font-weight: bold;font-family: 'Advent Pro', sans-serif;">Vous inscrivez en tant que étudiant(s)</h2>
+                  </div>
+                  <!-- ? email input -->
+                  <div   class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input formControlName="email"  [(ngModel)]="groupe.email" class="form-control color-bm" type="email" id="email" required="" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">Email</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? email input validation -->
+                  <div *ngIf="email.touched && email.invalid">
+                    <div *ngIf="email.errors['required']">
+                      <small class="form-text text-danger help-block">
+                        Email est requis
+                      </small>
+                    </div>
+                    <div *ngIf="email.errors['pattern']">
+                      <small class="form-text text-danger help-block">
+                        Email invalide
+                      </small>
+                    </div>
+                  </div>
+                  <!-- ? password input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input [(ngModel)]="groupe.password" formControlName="password" class="form-control color-bm" type="password" id="mot-de-passe" required="" placeholder="Mot de passe" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);" minlength="8"><label class="form-label" style="width: 123.5625px;font-family: Actor, sans-serif;">Mot de passe</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? password input validation -->
+                  <div *ngIf="password.touched && password.invalid">
+                    <div *ngIf="password.errors['required']">
+                      <small class="form-text text-danger help-block">
+                        Mot de passe est requis
+                      </small>
+                    </div>
+                    <div *ngIf="password.errors['minlength']">
+                      <small class="form-text text-danger help-block">
+                        Mot de passe doit contenir au moins 8 caractères
+                      </small>
+                    </div>
+                  </div>
+                  <!-- ? Niveau input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2"><select  [(ngModel)]="groupe.niveau" formControlName="niveux" class="form-select color-bm" required="" placeholder="Name" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
+                              <option >Licence Informatique</option>
+                              <option >Licence Génie Mathématique et Applications</option>
+                              <option>Master Informatique Décisionnelle</option>
+                              <option>Licence Génie Mathématique</option>
+                          </select><label class="form-label" style="width: 81.5625px;font-family: Actor, sans-serif;">Niveau</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? departement input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2"><select [(ngModel)]="groupe.depatementId" formControlName="departement" class="form-select color-bm" required="" placeholder="Name" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);">
+                              <option value="1">Informatique</option>
+                              <option value="2">Mathématiques</option>
+                          </select><label class="form-label" style="width: 81.5625px;font-family: Actor, sans-serif;">Département</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? nombre etudiant input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input [(ngModel)]="nbrEtudiant" (input)="charge(nbrEtudiant)" formControlName="nombreEtudiant" class="form-control color-bm" type="number" id="name-1" required="" placeholder="Nombre d'étudiants" style="box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-radius: 0px;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);" min="1" max="3" step="1"><label class="form-label" style="width: 166.5625px;font-family: Actor, sans-serif;">Nombre d'étudiants</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? nombre etudiant input validation -->
+                  <div *ngIf="nombreEtudiant.touched && nombreEtudiant.invalid">
+                    <div *ngIf="nombreEtudiant.errors['required']">
+                      <small class="form-text text-danger help-block">
+                        Nombre d'étudiants est requis
+                      </small>
+                    </div>
+                    <div *ngIf="nombreEtudiant.errors['min']">
+                      <small class="form-text text-danger help-block">
+                        Nombre d'étudiants doit être supérieur à 1
+                      </small>
+                    </div>
+                    <div *ngIf="nombreEtudiant.errors['max']">
+                      <small class="form-text text-danger help-block">
+                        Nombre d'étudiants doit être inférieur à 3
+                      </small>
+                    </div>
+                  </div>
+                  <div *ngFor="let index of [].constructor(nbrEtudiant);let i=index">
+                  <h1 style="text-align: center;font-family: 'Advent Pro', sans-serif;">Etudiant {{i+1}}</h1>
+                  <!-- ? nom input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input  [(ngModel)]="ListEtudiant[i].nom" formControlName="nom" class="form-control color-bm-g" type="text" id="email-1" required="" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 65.5625px;font-family: Actor, sans-serif;">Nom</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  
+                  <!-- ? nom input validation -->
+                  <div *ngIf="nom.touched && nom.invalid">
+                    <div *ngIf="nom.errors['required']">
+                      <small class="form-text text-danger help-block">
+                        Nom est requis
+                      </small>
+                    </div>
+                    <div *ngIf="nom.errors['pattern']">
+                      <small class="form-text text-danger help-block">
+                        Le nom ne doit pas contenir de chiffres
+                      </small>
+                    </div>
+                     <div *ngIf="nom.errors['minlength']">
+                      <small class="form-text text-danger help-block">
+                        Nom doit contenir au moins 3 caractères
+                      </small>
+                     </div>
+                  </div>
+                  <!-- ? prenom input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input formControlName="prenom"  [(ngModel)]="ListEtudiant[i].prenom" class="form-control color-bm-g" type="text" id="email-2" required="" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px var(--bs-dark);color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);"><label class="form-label" style="width: 69.5625px;font-family: Actor, sans-serif;">Prenom</label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? prenom input validation -->
+                  <div *ngIf="prenom.touched && prenom.invalid">
+                    <div *ngIf="prenom.errors['required']">
+                      <small class="form-text text-danger help-block">
+                        Prenom est requis
+                      </small>
+                    </div>
+                     <div *ngIf="prenom.errors['minlength']">
+                      <small class="form-text text-danger help-block">
+                        Prenom doit contenir au moins 3 caractères
+                      </small>
+                     </div>
+                  </div>
+                  <!-- ? apogee input -->
+                  <div class="control-group">
+                      <div class="mb-0 form-floating controls pb-2">
+                        <input  [(ngModel)]="ListEtudiant[i].appogee" formControlName="apogee" class="form-control color-bm-g" type="text" id="email-3" required="" placeholder="Email" style="border-radius: 0px;box-shadow: 0px 0px;color: var(--bs-gray-900);height: 62px;opacity: 1;--bs-body-bg: #2f3438;--bs-body-font-weight: normal;background: var(--bs-white);font-family: Alef, sans-serif;border-width: 0px;border-bottom-width: 1px;border-bottom-color: var(--bs-cyan);" minlength="8" maxlength="8"><label class="form-label" style="width: 77.5625px;font-family: Actor, sans-serif;">
+                          Apogee
+                        </label><small class="form-text text-danger help-block"></small></div>
+                  </div>
+                  <!-- ? apogee input validation -->
+                  <div *ngIf="apogee.touched && apogee.invalid">
+                    <div *ngIf="apogee.errors['required']">
+                      <small class="form-text text-danger help-block">
+                        Apogee est requis
+                      </small>
+                    </div>
+                    <div *ngIf="apogee.errors['pattern']">
+                      <small class="form-text text-danger help-block">
+                        L'apogee ne doit pas contenir de lettres
+                      </small>
+                    </div>
+                    <div *ngIf="apogee.errors['minlength']">
+                      <small class="form-text text-danger help-block">
+                        Apogee doit contenir au moins 8 chiffres
+                      </small>
+                    </div>
+                  </div>
+                </div>
+                  <div class="d-flex d-sm-flex d-md-flex justify-content-end justify-content-sm-end justify-content-md-end w-100" style="margin-top: 7px;"><button [disabled]="valid.invalid" class="btn btn-primary btn-lg d-block w-50" type="submit" style="background: var(--bs-indigo);border-width: 0px;text-align: center;"  (click)="affiche()">inscription</button></div>
+              </form>
+          </div>
+      </div>
+  </div>
+</body>
+
+
